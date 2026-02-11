@@ -2,133 +2,105 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Para o amor da minha vida</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
-body {
-    margin: 0;
-    height: 100vh;
-    background: url("https://www.transparenttextures.com/patterns/paper-fibers.png");
-    background-color: #f4f1eb;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Playfair Display', serif;
+body{
+    margin:0;
+    height:100vh;
+    background: #f4f1eb url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    font-family:'Playfair Display', serif;
 }
 
-/* Tela senha */
-#password-screen {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at center, #f3eaea, #e9dfd5);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    animation: fadeIn 2s ease;
+/* TELA DE SENHA */
+#password-screen{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background: radial-gradient(circle at center, #f2e9e4, #e8ddd2);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    transition: opacity 1.5s ease;
 }
 
-#password-screen h2 {
-    font-family: 'Great Vibes', cursive;
-    font-size: 60px;
-    margin-bottom: 10px;
+#password-screen h1{
+    font-family:'Great Vibes', cursive;
+    font-size:60px;
+    margin:0;
 }
 
-#password-screen p {
-    opacity: 0.7;
+#password-screen p{
+    opacity:0.7;
+    margin-top:10px;
 }
 
-input {
-    margin-top: 15px;
-    padding: 12px 20px;
-    border-radius: 30px;
-    border: none;
-    text-align: center;
-    font-size: 16px;
-    background: #fff;
+input{
+    margin-top:20px;
+    padding:12px 25px;
+    border-radius:30px;
+    border:none;
+    text-align:center;
+    font-size:16px;
 }
 
-button {
-    margin-top: 15px;
-    padding: 10px 25px;
-    border-radius: 30px;
-    border: none;
-    background: #d6b2b2;
-    cursor: pointer;
-    transition: 0.3s;
+button{
+    margin-top:15px;
+    padding:10px 30px;
+    border-radius:30px;
+    border:none;
+    background:#d8b4a0;
+    cursor:pointer;
+    transition:0.3s;
 }
 
-button:hover {
-    background: #c79a9a;
+button:hover{
+    background:#c69c86;
 }
 
-/* Carta */
-#letter {
-    display: none;
-    width: 800px;
-    max-width: 90%;
-    background: #f8f5ef;
-    padding: 70px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.2);
-    position: relative;
-    animation: openLetter 2s ease forwards;
+/* CARTA */
+#letter{
+    opacity:0;
+    transform:scale(0.9);
+    width:800px;
+    max-width:90%;
+    background:#fdfaf4;
+    padding:70px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.15);
+    position:relative;
+    transition:all 2s ease;
 }
 
-@keyframes openLetter {
-    from { opacity: 0; transform: scale(0.8) rotateX(40deg);}
-    to { opacity: 1; transform: scale(1) rotateX(0);}
+#letter.show{
+    opacity:1;
+    transform:scale(1);
 }
 
-.date {
-    position: absolute;
-    top: 25px;
-    left: 40px;
-    font-size: 14px;
-    opacity: 0;
-    animation: fadeIn 3s ease forwards;
-    animation-delay: 1s;
+.date{
+    position:absolute;
+    top:25px;
+    left:40px;
+    font-size:14px;
 }
 
-.title {
-    font-family: 'Great Vibes', cursive;
-    font-size: 70px;
-    margin-top: 40px;
-    margin-bottom: 40px;
-    opacity: 0;
-    animation: fadeIn 3s ease forwards;
-    animation-delay: 2s;
+.title{
+    font-family:'Great Vibes', cursive;
+    font-size:70px;
+    margin-top:40px;
+    margin-bottom:40px;
 }
 
-.text {
-    font-size: 18px;
-    line-height: 1.9;
-    opacity: 0;
-    animation: fadeIn 3s ease forwards;
-    animation-delay: 3s;
-}
-
-@keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
-}
-
-/* Pétalas */
-.petal {
-    position: absolute;
-    width: 15px;
-    height: 15px;
-    background: rgba(214, 153, 153, 0.6);
-    border-radius: 50%;
-    animation: fall linear infinite;
-}
-
-@keyframes fall {
-    0% { transform: translateY(-10px) rotate(0); }
-    100% { transform: translateY(100vh) rotate(360deg); }
+.text{
+    font-size:18px;
+    line-height:1.9;
 }
 </style>
 </head>
@@ -136,13 +108,13 @@ button:hover {
 <body>
 
 <audio id="music" loop>
-<source src="love.mp3" type="audio/mpeg">
+  <source src="love.mp3.mp3" type="audio/mpeg">
 </audio>
 
 <div id="password-screen">
-    <h2>Meu amor 🤍</h2>
-    <p>Digite a data do nosso primeiro encontro</p>
-    <input type="password" id="password">
+    <h1>Meu amor 🤍</h1>
+    <p>Digite nossa data especial</p>
+    <input type="password" id="password" placeholder="••••">
     <button onclick="checkPassword()">Abrir</button>
 </div>
 
@@ -171,7 +143,27 @@ Você é o amor da minha vida 🤍
 </div>
 
 <script>
-function checkPassword() {
+function checkPassword(){
     var pass = document.getElementById("password").value;
 
-    if(pass === "0103") {
+    if(pass === "0103"){  // você pode mudar a senha aqui
+        document.getElementById("password-screen").style.opacity = "0";
+        setTimeout(function(){
+            document.getElementById("password-screen").style.display = "none";
+        },1500);
+
+        document.getElementById("letter").classList.add("show");
+
+        var music = document.getElementById("music");
+        music.play().catch(() => {
+            console.log("Autoplay bloqueado pelo navegador.");
+        });
+
+    }else{
+        alert("Senha incorreta 🤍");
+    }
+}
+</script>
+
+</body>
+</html>
