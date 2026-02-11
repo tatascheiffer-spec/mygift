@@ -3,181 +3,227 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My bae</title>
+<title>My Bae</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+    font-family:'Cormorant Garamond',serif;
+    background:#e9e4dc;
+    overflow-x:hidden;
 }
 
-body {
-    font-family: 'Cormorant Garamond', serif;
-    background: #e9e4dc;
-    overflow-x: hidden;
+/* FUNDO FLORAL */
+.background{
+    position:fixed;
+    inset:0;
+    background:
+        url('db13ced6-b846-4401-a7cd-5b4848534313.png') no-repeat right bottom,
+        url('db13ced6-b846-4401-a7cd-5b4848534313.png') no-repeat left top;
+    background-size:600px,500px;
+    background-color:#e9e4dc;
+    opacity:0.35;
+    filter:blur(1px);
+    z-index:-2;
 }
 
-/* FUNDO FLORES */
-.background {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: url('db13ced6-b846-4401-a7cd-5b4848534313.png') no-repeat center;
-    background-size: cover;
-    opacity: 0.15;
-    filter: blur(2px);
-    z-index: -1;
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:radial-gradient(circle at center,rgba(255,255,255,0.6),rgba(233,228,220,0.9));
+    z-index:-1;
 }
 
 /* TELA SENHA */
-#lockScreen {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: #e9e4dc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    z-index: 10;
+#lockScreen{
+    position:fixed;
+    inset:0;
+    background:#e9e4dc;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    z-index:10;
 }
 
-#lockScreen h2 {
-    font-weight: 300;
-    margin-bottom: 20px;
-    letter-spacing: 2px;
+#lockScreen h2{
+    font-weight:300;
+    margin-bottom:20px;
+    letter-spacing:2px;
 }
 
-input {
-    padding: 10px 20px;
-    border: none;
-    border-bottom: 1px solid #555;
-    background: transparent;
-    font-size: 18px;
-    text-align: center;
-    outline: none;
+input{
+    padding:10px 20px;
+    border:none;
+    border-bottom:1px solid #555;
+    background:transparent;
+    font-size:18px;
+    text-align:center;
+    outline:none;
 }
 
-button {
-    margin-top: 20px;
-    padding: 8px 25px;
-    background: transparent;
-    border: 1px solid #555;
-    cursor: pointer;
-    transition: 0.3s;
+button{
+    margin-top:20px;
+    padding:8px 25px;
+    background:transparent;
+    border:1px solid #555;
+    cursor:pointer;
+    transition:0.3s;
 }
 
-button:hover {
-    background: #555;
-    color: white;
+button:hover{
+    background:#555;
+    color:white;
+}
+
+/* CONTAINER */
+.container{
+    padding:100px 20px 180px;
+    display:none;
+    text-align:center;
+    animation:fadeIn 1.5s ease forwards;
+}
+
+@keyframes fadeIn{
+    from{opacity:0;transform:translateY(20px);}
+    to{opacity:1;transform:translateY(0);}
 }
 
 /* CARTA */
-.container {
-    padding: 80px 20px;
-    display: none;
-    text-align: center;
+.letter{
+    max-width:750px;
+    margin:auto;
+    background:#fdfaf3;
+    padding:60px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.2);
+    position:relative;
+    transition:0.5s;
 }
 
-.letter {
-    max-width: 750px;
-    margin: auto;
-    background: #fdfaf3;
-    padding: 60px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-    position: relative;
-    transition: 0.5s ease;
+.letter:hover{
+    transform:translateY(-6px);
 }
 
-.letter:hover {
-    transform: translateY(-5px);
+.paper-texture{
+    position:absolute;
+    inset:0;
+    background:url('https://www.transparenttextures.com/patterns/paper.png');
+    opacity:0.4;
+    pointer-events:none;
 }
 
-.paper-texture {
-    position: absolute;
-    inset: 0;
-    background: url('https://www.transparenttextures.com/patterns/paper.png');
-    opacity: 0.4;
-    pointer-events: none;
+.date{
+    font-size:14px;
+    margin-bottom:20px;
 }
 
-.date {
-    font-size: 14px;
-    margin-bottom: 20px;
+.title{
+    font-family:'Great Vibes',cursive;
+    font-size:42px;
+    margin-bottom:40px;
 }
 
-.title {
-    font-family: 'Great Vibes', cursive;
-    font-size: 42px;
-    margin-bottom: 40px;
-}
-
-.letter p {
-    margin-bottom: 18px;
-    line-height: 1.7;
-    font-size: 20px;
-}
-
-/* PLAYER */
-.player {
-    margin-top: 40px;
-    background: #f3eee5;
-    padding: 20px;
-    display: inline-block;
-    border-radius: 40px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-}
-
-.player button {
-    border: none;
-    background: none;
-    font-size: 18px;
-    cursor: pointer;
-    margin: 0 10px;
+.letter p{
+    margin-bottom:18px;
+    line-height:1.7;
+    font-size:20px;
 }
 
 /* FOTO */
-.photo-section {
-    margin-top: 60px;
-    text-align: center;
+.photo-section{
+    margin-top:80px;
 }
 
-.photo-wrapper {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
+.photo-wrapper{
+    position:relative;
+    display:inline-block;
+    cursor:pointer;
 }
 
-.photo-wrapper img {
-    max-width: 500px;
-    border-radius: 10px;
-    filter: blur(10px);
-    transition: 0.8s;
+.photo-wrapper img{
+    max-width:500px;
+    border-radius:10px;
+    filter:blur(12px);
+    transition:1s;
 }
 
-.photo-wrapper:hover img {
-    transform: scale(1.02);
+.photo-wrapper:hover img{
+    transform:scale(1.03);
 }
 
-.reveal-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    font-size: 20px;
-    letter-spacing: 2px;
+.reveal-text{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    color:white;
+    font-size:20px;
+    letter-spacing:2px;
 }
 
-.photo-wrapper.revealed img {
-    filter: blur(0);
+.photo-wrapper.revealed img{
+    filter:blur(0);
 }
 
-.photo-wrapper.revealed .reveal-text {
-    display: none;
+.photo-wrapper.revealed .reveal-text{
+    display:none;
+}
+
+/* PLAYER FIXO */
+.music-bar{
+    position:fixed;
+    bottom:0;
+    width:100%;
+    background:rgba(243,238,229,0.95);
+    backdrop-filter:blur(10px);
+    padding:15px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 -5px 30px rgba(0,0,0,0.1);
+}
+
+.music-info{
+    flex:1;
+}
+
+.music-info span{
+    font-size:16px;
+    letter-spacing:1px;
+}
+
+.progress-container{
+    width:100%;
+    height:4px;
+    background:rgba(0,0,0,0.1);
+    margin-top:8px;
+    border-radius:5px;
+    overflow:hidden;
+}
+
+.progress{
+    height:100%;
+    width:0%;
+    background:#6b4c3b;
+    transition:width 0.2s linear;
+}
+
+.controls button{
+    border:none;
+    background:none;
+    font-size:20px;
+    margin-left:15px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.controls button:hover{
+    transform:scale(1.2);
+    color:#6b4c3b;
 }
 </style>
 </head>
@@ -193,6 +239,7 @@ button:hover {
 </div>
 
 <div class="container" id="mainContent">
+
     <div class="letter">
         <div class="paper-texture"></div>
         <div class="date">Feb 12, 2026</div>
@@ -208,16 +255,12 @@ button:hover {
         <p>Você acalma o caos em mim.</p>
         <p>Você traz segurança, conforto e o sentimento de eternidade.</p>
         <p>Você existe como quem atravessa: você não invade, não faz barulho, mas transforma tudo quando passa.</p>
-        <p>Hoje, não celebro apenas o seu aniversário, mas a sua essência, seu coração puro e bom...</p>
+        <p>Hoje, não celebro apenas o seu aniversário, mas a sua essência, seu coração puro e bom.</p>
+        <p>Seguirei sempre ao teu lado, te amando com tudo que há em mim.</p>
+        <p>Se existe algo que o tempo confirmou, é que te amar é um lugar seguro.</p>
         <p>Seguirei, por escolha, te amando por todos os meus dias, até o meu último dia.</p>
-        <p>Tenha um feliz aniversário!</p>
+        <p>Tenha um feliz aniversário! Que a vida seja generosa contigo.</p>
         <p><strong>Você é o amor da minha vida ❤️</strong></p>
-
-        <div class="player">
-            <audio id="audio" src="love.mp3" autoplay loop></audio>
-            <button onclick="playMusic()">▶</button>
-            <button onclick="pauseMusic()">⏸</button>
-        </div>
     </div>
 
     <div class="photo-section">
@@ -226,30 +269,50 @@ button:hover {
             <div class="reveal-text">Clique para revelar</div>
         </div>
     </div>
+
+</div>
+
+<!-- PLAYER -->
+<div class="music-bar">
+    <div class="music-info">
+        <span>Love – Taylor Olin</span>
+        <div class="progress-container">
+            <div class="progress"></div>
+        </div>
+    </div>
+    <div class="controls">
+        <button onclick="playMusic()">⏵</button>
+        <button onclick="pauseMusic()">⏸</button>
+    </div>
+    <audio id="audio" src="love.mp3" autoplay></audio>
 </div>
 
 <script>
-function checkPassword() {
-    const password = document.getElementById("passwordInput").value;
-    if(password === "0103") {
-        document.getElementById("lockScreen").style.display = "none";
-        document.getElementById("mainContent").style.display = "block";
-    } else {
+function checkPassword(){
+    const password=document.getElementById("passwordInput").value;
+    if(password==="0103"){
+        document.getElementById("lockScreen").style.display="none";
+        document.getElementById("mainContent").style.display="block";
+        audio.play();
+    }else{
         alert("Data incorreta 🤍");
     }
 }
 
-function playMusic() {
-    document.getElementById("audio").play();
+function revealPhoto(el){
+    el.classList.toggle("revealed");
 }
 
-function pauseMusic() {
-    document.getElementById("audio").pause();
-}
+const audio=document.getElementById("audio");
+const progress=document.querySelector(".progress");
 
-function revealPhoto(element) {
-    element.classList.toggle("revealed");
-}
+audio.addEventListener("timeupdate",()=>{
+    const percent=(audio.currentTime/audio.duration)*100;
+    progress.style.width=percent+"%";
+});
+
+function playMusic(){audio.play();}
+function pauseMusic(){audio.pause();}
 </script>
 
 </body>
