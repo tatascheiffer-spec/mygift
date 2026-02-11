@@ -3,106 +3,147 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para o meu amor</title>
+<title>Meu Amor</title>
+
+<!-- Fontes -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
 body {
     margin: 0;
-    font-family: 'Georgia', serif;
-    background: #f6f1e8;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    background: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+    background-color: #f6f1e8;
+    font-family: 'Playfair Display', serif;
+}
+
+/* Container geral */
+.card {
+    width: 800px;
+    max-width: 90%;
+    background: #fdfaf3;
+    padding: 60px;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+/* Data */
+.date {
+    position: absolute;
+    top: 30px;
+    left: 60px;
+    font-size: 14px;
+    color: #444;
+}
+
+/* Título */
+.title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 60px;
+    margin-top: 40px;
+}
+
+/* Texto */
+.letter {
+    margin-top: 30px;
+    line-height: 1.8;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1.5s ease;
+}
+
+/* Mostrar carta */
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Tela de senha */
+.login {
     text-align: center;
 }
 
-.container {
-    background: #fffaf3;
-    padding: 40px;
-    max-width: 600px;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-
-h1 {
-    font-weight: normal;
+.login h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 50px;
 }
 
 input {
-    padding: 10px;
-    margin-top: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    padding: 12px;
+    border: none;
+    border-bottom: 1px solid #aaa;
+    background: transparent;
     font-family: inherit;
+    text-align: center;
+    margin-top: 20px;
 }
 
 button {
-    padding: 10px 20px;
-    margin-top: 15px;
+    margin-top: 20px;
+    padding: 10px 25px;
     border: none;
-    background-color: #c8a97e;
+    background: #c8a97e;
     color: white;
-    border-radius: 5px;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #b08d63;
+    background: #b08d63;
 }
 
 .hidden {
     display: none;
-}
-
-.text-page {
-    max-height: 80vh;
-    overflow-y: auto;
-    text-align: left;
-    line-height: 1.8;
-    white-space: pre-line;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container" id="login">
-    <h1>Tenho algo para você 🤍</h1>
-    <p>Digite a senha para abrir</p>
-    <input type="password" id="password" placeholder="Senha">
-    <br>
-    <button onclick="checkPassword()">Abrir</button>
+<div class="card">
+
+    <div class="date">Fev 12, 2026</div>
+
+    <!-- Tela de senha -->
+    <div class="login" id="login">
+        <h2>Meu amor</h2>
+        <p>Digite a senha para abrir sua carta</p>
+        <input type="password" id="password" placeholder="Senha">
+        <br>
+        <button onclick="unlock()">Abrir</button>
+    </div>
+
+    <!-- Carta -->
+    <div class="letter hidden" id="letter">
+        COLE AQUI SUA CARTA COMPLETA.
+    </div>
+
 </div>
 
-<div class="container hidden text-page" id="content">
-    <h1>Meu amor</h1>
-
-Quão belo é poder compartilhar o mesmo momento da história que você.
-Quão magnifico são os desencontros e encontros da vida que me levaram até os seus braços.
-É como se os meus dias soubessem que em algum ponto da minha história, chegaria você, pra mudar ela completamente.
-Você não chegou fazendo barulho, você chegou fazendo sentido.
-Desde a tua chegada, tudo tomou o seu devido lugar. 
-Meu coração finalmente descansou com a sensação de quem volta pra casa. Em você encontrei o meu lar.
-No brilho silencioso dos seus olhos, meu caminho foi de encontro ao teu. 
-Você acalma o caos em mim. 
-Você traz segurança, conforto e o sentimento de eternidade.
-Você existe como quem atravessa: você não invade, não faz barulho, mas transforma tudo quando passa.
-Hoje, não celebro apenas o seu aniversário, mas a sua essencia, seu coração puro e bom. Celebro o homem que você é, bom e forte. Um homem inteligente, responsável, dedicado, carinhoso, cuidadoso, entre tantas qualidades inerentes a ti. 
-Que você receba de volta tudo o que doa, muitas vezes sem nem perceber.
-Seguirei sempre ao teu lado, te amando com tudo que há em mim.
-Se existe algo que o tempo confirmou, é que te amar é um lugar seguro.
-Seguirei, por escolha, te amando por todos os meus dias, até o meu último dia.
-Tenha um feliz aniversário! Que a vida seja generosa contigo, da mesma forma que tu és comigo.
-Você é o amor da minha vida 🤍
-</div>
+<!-- Música -->
+<audio id="music" loop>
+    <source src="COLOQUE_AQUI_O_LINK_DA_MUSICA.mp3" type="audio/mpeg">
+</audio>
 
 <script>
-function checkPassword() {
+function unlock() {
     var password = document.getElementById("password").value;
-    if (password === "0103") {  // ← MUDE A SENHA AQUI
+    if (password === "1202") {
+
         document.getElementById("login").classList.add("hidden");
-        document.getElementById("content").classList.remove("hidden");
+
+        let letter = document.getElementById("letter");
+        letter.classList.remove("hidden");
+
+        setTimeout(() => {
+            letter.classList.add("show");
+        }, 100);
+
+        document.getElementById("music").play();
+
     } else {
         alert("Senha incorreta 🤍");
     }
