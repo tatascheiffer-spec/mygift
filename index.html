@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Meu Amor 🤍</title>
 
-<!-- Fontes elegantes -->
 <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
@@ -15,10 +14,10 @@
 body{
     margin:0;
     font-family:'Cormorant Garamond', serif;
-    background:linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)),
-    url("https://www.transparenttextures.com/patterns/cream-paper.png");
-    background-color:#d8cec5;
-    color:#3e3a37;
+    background:#f5efe6;
+    background-image:url("https://www.transparenttextures.com/patterns/handmade-paper.png");
+    color:#3b3632;
+    overflow-x:hidden;
 }
 
 /* ================= TELA DE SENHA ================= */
@@ -26,7 +25,7 @@ body{
 #password-screen{
     position:fixed;
     inset:0;
-    background:linear-gradient(135deg,#e7ddd4,#cbb8a9);
+    background:#f5efe6;
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -37,87 +36,118 @@ body{
 
 #password-screen h1{
     font-family:'Allura', cursive;
-    font-size:70px;
+    font-size:85px;
     margin:0;
 }
 
 #password-screen p{
-    font-size:18px;
-    opacity:0.8;
+    opacity:0.7;
+    margin-top:10px;
 }
 
 #password-screen input{
-    padding:15px 25px;
-    border-radius:40px;
-    border:none;
-    margin:25px 0;
+    padding:14px 25px;
+    border:1px solid #c8b8aa;
+    background:#fffdf9;
     font-size:20px;
     text-align:center;
-    outline:none;
+    margin:30px 0;
     width:220px;
+    transition:0.4s;
+}
+
+#password-screen input:focus{
+    border-color:#a8816c;
+    box-shadow:0 0 15px rgba(168,129,108,0.3);
 }
 
 #password-screen button{
-    padding:12px 35px;
-    border:none;
-    border-radius:40px;
-    background:#a8816c;
-    color:white;
-    font-size:16px;
+    padding:10px 35px;
+    border:1px solid #a8816c;
+    background:transparent;
+    color:#a8816c;
     cursor:pointer;
-    transition:0.3s;
+    transition:0.4s;
 }
 
 #password-screen button:hover{
-    transform:scale(1.05);
+    background:#a8816c;
+    color:white;
+    letter-spacing:1px;
 }
 
 /* ================= CONTEÚDO ================= */
 
 #main-content{
     display:none;
-    padding:100px 20px 150px 20px;
+    padding:120px 20px 200px 20px;
+    position:relative;
 }
 
-/* Carta */
+/* Fundo floral estilo colagem */
+
+#main-content::before{
+    content:"";
+    position:absolute;
+    top:0;
+    right:0;
+    width:400px;
+    height:400px;
+    background:url("https://pngimg.com/uploads/rose/rose_PNG667.png");
+    background-size:contain;
+    background-repeat:no-repeat;
+    opacity:0.15;
+}
+
+#main-content::after{
+    content:"";
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:400px;
+    height:400px;
+    background:url("https://pngimg.com/uploads/rose/rose_PNG667.png");
+    background-size:contain;
+    background-repeat:no-repeat;
+    opacity:0.15;
+    transform:rotate(180deg);
+}
+
+/* ================= CARTA ================= */
 
 .carta-container{
     max-width:850px;
     margin:0 auto;
-    background:#f8f2eb;
-    padding:70px;
-    border-radius:8px;
-    box-shadow:0 40px 80px rgba(0,0,0,0.2);
+    background:#fdfaf5;
+    padding:90px;
     position:relative;
+    box-shadow:
+        0 5px 20px rgba(0,0,0,0.08),
+        0 40px 80px rgba(0,0,0,0.2);
+    transition:0.6s ease;
 }
 
-/* Flores laterais estilo aquarela */
-
-.carta-container::before{
-    content:"";
-    position:absolute;
-    top:-60px;
-    left:-60px;
-    width:200px;
-    height:200px;
-    background:url("https://pngimg.com/uploads/rose/rose_PNG667.png");
-    background-size:contain;
-    background-repeat:no-repeat;
-    opacity:0.35;
+.carta-container:hover{
+    transform:translateY(-8px);
 }
+
+/* Rasgo inferior */
 
 .carta-container::after{
     content:"";
     position:absolute;
-    bottom:-60px;
-    right:-60px;
-    width:200px;
-    height:200px;
-    background:url("https://pngimg.com/uploads/rose/rose_PNG667.png");
-    background-size:contain;
-    background-repeat:no-repeat;
-    opacity:0.35;
-    transform:rotate(180deg);
+    bottom:-40px;
+    left:0;
+    width:100%;
+    height:60px;
+    background:url("https://www.transparenttextures.com/patterns/paper-1.png");
+    opacity:0.4;
+}
+
+/* textura interna */
+
+.carta-container{
+    background-image:url("https://www.transparenttextures.com/patterns/paper-fibers.png");
 }
 
 .data{
@@ -128,8 +158,8 @@ body{
 
 .titulo{
     font-family:'Allura', cursive;
-    font-size:70px;
-    margin-bottom:40px;
+    font-size:90px;
+    margin-bottom:50px;
 }
 
 .carta{
@@ -140,21 +170,26 @@ body{
 /* ================= PRESENTE ================= */
 
 .presente-section{
-    margin-top:120px;
+    margin-top:150px;
     text-align:center;
 }
 
 .presente-container{
-    margin-top:30px;
+    margin-top:40px;
     position:relative;
     display:inline-block;
     cursor:pointer;
+    transition:0.6s;
+}
+
+.presente-container:hover{
+    transform:scale(1.03);
 }
 
 .presente-container img{
     max-width:380px;
     border-radius:12px;
-    transition:0.8s ease;
+    transition:1s ease;
 }
 
 .blur{
@@ -170,34 +205,53 @@ body{
     color:white;
     padding:18px 35px;
     border-radius:30px;
-    font-size:18px;
 }
 
-/* ================= PLAYER FIXO ESTILO SPOTIFY ================= */
+/* ================= PLAYER ESTILO VINTAGE ================= */
 
 .player-bar{
     position:fixed;
     bottom:0;
     width:100%;
-    background:#181818;
-    padding:15px 20px;
+    background:#2d2621;
+    padding:18px;
     display:flex;
-    align-items:center;
     justify-content:center;
-    gap:20px;
-    box-shadow:0 -10px 30px rgba(0,0,0,0.4);
+    align-items:center;
+    gap:30px;
+    box-shadow:0 -15px 40px rgba(0,0,0,0.4);
 }
 
 .player-bar button{
-    background:none;
-    border:none;
-    color:white;
+    background:transparent;
+    border:1px solid #d6b48a;
+    color:#d6b48a;
     font-size:18px;
+    padding:8px 20px;
     cursor:pointer;
+    transition:0.4s;
+}
+
+.player-bar button:hover{
+    background:#d6b48a;
+    color:#2d2621;
+    letter-spacing:1px;
 }
 
 .player-bar input{
-    width:120px;
+    width:150px;
+    cursor:pointer;
+}
+
+/* animação suave ao entrar */
+
+.fade-in{
+    animation:fade 2s ease forwards;
+    opacity:0;
+}
+
+@keyframes fade{
+    to{opacity:1;}
 }
 
 </style>
@@ -205,7 +259,6 @@ body{
 
 <body>
 
-<!-- SENHA -->
 <div id="password-screen">
     <h1>Meu amor 🤍</h1>
     <p>Digite nossa data especial</p>
@@ -213,70 +266,43 @@ body{
     <button onclick="checkPassword()">Abrir</button>
 </div>
 
-<!-- CONTEÚDO -->
-<div id="main-content">
+<div id="main-content" class="fade-in">
 
     <div class="carta-container">
         <div class="data">12 de Fevereiro de 2026</div>
         <div class="titulo">Meu amor 🤍</div>
 
         <div class="carta">
-            <p>
-        Quão belo é poder compartilhar o mesmo momento da história que você.
-        Quão magníficos foram os desencontros e encontros da vida que me levaram até os seus braços.
-        </p>
+            <p>Quão belo é poder compartilhar o mesmo momento da história que você.
+            Quão magníficos foram os desencontros e encontros da vida que me levaram até os seus braços.</p>
 
-        <p>
-        É como se os meus dias soubessem que, em algum ponto da minha história, chegaria você para mudá-la completamente.
-        Você não chegou fazendo barulho, você chegou fazendo sentido.
-        </p>
+            <p>É como se os meus dias soubessem que, em algum ponto da minha história, chegaria você para mudá-la completamente.
+            Você não chegou fazendo barulho, você chegou fazendo sentido.</p>
 
-        <p>
-        Desde a tua chegada, tudo tomou o seu devido lugar.
-        Meu coração finalmente descansou com a sensação de quem volta para casa.
-        Em você encontrei o meu lar.
-        </p>
+            <p>Desde a tua chegada, tudo tomou o seu devido lugar.
+            Meu coração finalmente descansou com a sensação de quem volta para casa.
+            Em você encontrei o meu lar.</p>
 
-        <p>
-        No brilho silencioso dos seus olhos, meu caminho foi de encontro ao teu.
-        Você acalma o caos em mim.
-        Você traz segurança, conforto e o sentimento de eternidade.
-        </p>
+            <p>No brilho silencioso dos seus olhos, meu caminho foi de encontro ao teu.
+            Você acalma o caos em mim.
+            Você traz segurança, conforto e o sentimento de eternidade.</p>
 
-        <p>
-        Hoje não celebro apenas o seu aniversário, mas a sua essência.
-        Celebro o homem forte, inteligente, responsável, dedicado e carinhoso que você é.
-        </p>
+            <p>Hoje não celebro apenas o seu aniversário, mas a sua essência.
+            Celebro o homem forte, inteligente, responsável, dedicado e carinhoso que você é.</p>
 
-        <p>
-        Seguirei sempre ao teu lado, te amando com tudo o que há em mim.
-        Se existe algo que o tempo confirmou, é que te amar é um lugar seguro.
-        </p>
+            <p>Seguirei sempre ao teu lado, te amando com tudo o que há em mim.
+            Se existe algo que o tempo confirmou, é que te amar é um lugar seguro.</p>
 
-        <p>
-        Feliz aniversário, meu amor.
-        Que a vida seja generosa contigo da mesma forma que você é comigo.
-        Você é o amor da minha vida 🤍
-        </p>
-        </div>
-    </div>
-
-    <div class="presente-section">
-        <h2>Seu presente está a caminho 🤍</h2>
-
-        <div class="presente-container" onclick="revelarPresente()">
-            <img id="imagemPresente" src="presente.jpg" class="blur">
-            <div id="overlayText" class="overlay-text">
-                Clique para revelar 💌
-            </div>
+            <p>Feliz aniversário, meu amor.
+            Que a vida seja generosa contigo da mesma forma que você é comigo.
+            Você é o amor da minha vida 🤍</p>
         </div>
     </div>
 
 </div>
 
-<!-- PLAYER FIXO -->
 <div class="player-bar">
-    <button onclick="togglePlay()">▶</button>
+    <button onclick="togglePlay()">▶ Tocar</button>
     <input type="range" min="0" max="1" step="0.01" value="0.4"
            onchange="setVolume(this.value)">
 </div>
@@ -288,7 +314,7 @@ body{
 function checkPassword(){
     const senha = document.getElementById("passwordInput").value;
 
-    if(senha === "0103"){ 
+    if(senha === "0103"){
         document.getElementById("password-screen").style.display = "none";
         document.getElementById("main-content").style.display = "block";
 
@@ -300,17 +326,16 @@ function checkPassword(){
     }
 }
 
-function revelarPresente(){
-    document.getElementById("imagemPresente").classList.remove("blur");
-    document.getElementById("overlayText").style.display = "none";
-}
-
 function togglePlay(){
     const musica = document.getElementById("musica");
+    const btn = document.querySelector(".player-bar button");
+
     if(musica.paused){
         musica.play();
+        btn.innerText = "❚❚ Pausar";
     } else {
         musica.pause();
+        btn.innerText = "▶ Tocar";
     }
 }
 
