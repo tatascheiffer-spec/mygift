@@ -5,137 +5,121 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Meu Amor 🤍</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Allura&display=swap" rel="stylesheet">
 
 <style>
 
-/* ================= FUNDO ================= */
+/* ================= BASE ================= */
 
 body{
     margin:0;
-    font-family:'Cormorant Garamond', serif;
-    background:
-        radial-gradient(circle at center, rgba(0,0,0,0) 60%, rgba(0,0,0,0.15)),
-        url("https://www.transparenttextures.com/patterns/handmade-paper.png");
-    background-color:#efe7dd;
-    color:#3a342f;
+    font-family:'Playfair Display', serif;
+    background:#eae2d8;
     overflow-x:hidden;
+    color:#3b352f;
 }
 
-/* flores colagem no fundo */
-
+/* Fundo com profundidade */
 body::before{
     content:"";
     position:fixed;
-    right:0;
-    top:0;
-    width:500px;
-    height:500px;
-    background:url("https://pngimg.com/uploads/rose/rose_PNG667.png") no-repeat;
-    background-size:contain;
-    opacity:0.18;
+    inset:0;
+    background:radial-gradient(circle at center, rgba(0,0,0,0) 60%, rgba(0,0,0,0.15));
     pointer-events:none;
 }
 
-body::after{
-    content:"";
+/* Flores elegantes (aquarela suave) */
+.flor-top{
     position:fixed;
-    left:0;
-    bottom:0;
-    width:500px;
-    height:500px;
-    background:url("https://i.imgur.com/8Km9tLL.png") no-repeat;
-    background-size:contain;
-    opacity:0.18;
+    top:-40px;
+    right:-40px;
+    width:420px;
+    opacity:0.25;
+    pointer-events:none;
+}
+
+.flor-bottom{
+    position:fixed;
+    bottom:-40px;
+    left:-40px;
+    width:420px;
+    opacity:0.25;
     transform:rotate(180deg);
     pointer-events:none;
 }
 
-/* ================= TELA SENHA ================= */
+/* ================= TELA DE SENHA ================= */
 
 #password-screen{
     position:fixed;
     inset:0;
-    background:#efe7dd;
+    background:#eae2d8;
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
-    z-index:9999;
+    transition:opacity 0.8s ease;
 }
 
 #password-screen h1{
-    font-family:'Great Vibes', cursive;
-    font-size:95px;
+    font-family:'Allura', cursive;
+    font-size:90px;
     margin:0;
 }
 
 #password-screen input{
-    margin:30px 0;
+    margin-top:30px;
     padding:14px 25px;
-    border:1px solid #b9a899;
-    background:#fffdf9;
-    font-size:20px;
-    text-align:center;
     width:220px;
+    text-align:center;
+    font-size:18px;
+    border:none;
+    border-bottom:1px solid #8b7b6b;
+    background:transparent;
+    outline:none;
 }
 
 #password-screen button{
-    padding:10px 35px;
-    border:1px solid #7c6454;
+    margin-top:25px;
+    padding:10px 30px;
     background:transparent;
-    color:#7c6454;
+    border:1px solid #8b7b6b;
     cursor:pointer;
     transition:0.4s;
 }
 
 #password-screen button:hover{
-    background:#7c6454;
+    background:#8b7b6b;
     color:white;
 }
 
-/* ================= CARTA ================= */
+/* ================= CONTEÚDO ================= */
 
 #main-content{
     display:none;
-    padding:120px 20px 200px 20px;
+    padding:140px 20px 200px 20px;
 }
 
+/* Carta */
 .carta-container{
     max-width:900px;
-    margin:0 auto;
+    margin:auto;
     background:#fdfaf5;
-    padding:90px;
-    position:relative;
+    padding:100px;
     box-shadow:
-        0 10px 30px rgba(0,0,0,0.1),
-        0 50px 90px rgba(0,0,0,0.25);
-    transition:0.6s;
-}
-
-.carta-container{
+        0 15px 40px rgba(0,0,0,0.15),
+        0 60px 100px rgba(0,0,0,0.25);
+    position:relative;
     opacity:0;
-    transform:translateY(40px);
-    animation:fadeInCarta 1.8s ease forwards;
+    transform:translateY(50px);
+    animation:fadeCarta 2s ease forwards;
 }
 
-@keyframes fadeInCarta{
+@keyframes fadeCarta{
     to{
         opacity:1;
         transform:translateY(0);
     }
-}
-
-
-.carta-container::after{
-    content:"";
-    position:absolute;
-    bottom:-35px;
-    left:0;
-    width:100%;
-    height:60px;
-    background:url("https://www.transparenttextures.com/patterns/paper-1.png");
-    opacity:0.4;
 }
 
 .data{
@@ -145,8 +129,8 @@ body::after{
 }
 
 .titulo{
-    font-family:'Great Vibes', cursive;
-    font-size:100px;
+    font-family:'Allura', cursive;
+    font-size:95px;
     margin-bottom:60px;
 }
 
@@ -158,25 +142,25 @@ body::after{
 /* ================= PRESENTE ================= */
 
 .presente-section{
-    margin-top:140px;
+    margin-top:160px;
     text-align:center;
 }
 
 .presente-container{
     margin-top:40px;
-    position:relative;
     display:inline-block;
+    position:relative;
     cursor:pointer;
 }
 
 .presente-container img{
     max-width:400px;
-    border-radius:10px;
+    border-radius:8px;
     transition:1s ease;
 }
 
 .blur{
-    filter:blur(30px);
+    filter:blur(25px);
 }
 
 .overlay-text{
@@ -184,65 +168,58 @@ body::after{
     top:50%;
     left:50%;
     transform:translate(-50%,-50%);
-    background:rgba(0,0,0,0.6);
+    background:rgba(0,0,0,0.5);
     color:white;
-    padding:18px 35px;
-    border-radius:30px;
+    padding:18px 40px;
+    border-radius:40px;
 }
 
-/* ================= PLAYER SPOTIFY ================= */
+/* ================= PLAYER MINIMAL ================= */
 
 .player-bar{
     position:fixed;
     bottom:0;
     width:100%;
-    background:#121212;
-    padding:15px 40px;
+    background:rgba(0,0,0,0.85);
+    padding:18px 40px;
     display:flex;
     align-items:center;
-    gap:25px;
+    gap:20px;
 }
 
 .play-btn{
-    width:42px;
-    height:42px;
+    width:38px;
+    height:38px;
     border-radius:50%;
-    background:#1db954;
     border:none;
+    background:white;
     cursor:pointer;
-    font-size:16px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    font-size:14px;
 }
 
 .progress input{
     width:100%;
-    accent-color:#1db954;
-}
-
-.volume{
-    width:100px;
 }
 
 .volume input{
-    width:100%;
-    accent-color:#1db954;
+    width:100px;
 }
-    
-<div class="volume">
-    <input type="range" min="0" max="1" step="0.01" value="0.4"
-    onchange="musica.volume=this.value">
-</div>
 
+.time{
+    color:#ccc;
+    font-size:12px;
+}
 
 </style>
 </head>
 
 <body>
 
+<img src="https://i.imgur.com/8Km9tLL.png" class="flor-top">
+<img src="https://i.imgur.com/8Km9tLL.png" class="flor-bottom">
+
 <div id="password-screen">
-    <h1>Meu amor 🤍</h1>
+    <h1>Meu amor ❤️</h1>
     <p>Digite nossa data especial</p>
     <input type="password" id="passwordInput">
     <button onclick="checkPassword()">Abrir</button>
@@ -251,8 +228,8 @@ body::after{
 <div id="main-content">
 
 <div class="carta-container">
-<div class="data">12 de Fevereiro de 2026</div>
-<div class="titulo">Meu amor 🤍</div>
+<div class="data">Fev, 12, 2026</div>
+<div class="titulo">Meu amor ❤️</div>
 
 <div class="carta">
 <p>
@@ -290,13 +267,13 @@ body::after{
         <p>
         Feliz aniversário, meu amor.
         Que a vida seja generosa contigo da mesma forma que você é comigo.
-        Você é o amor da minha vida 🤍
+        Você é o amor da minha vida ❤️
         </p>
 </div>
 </div>
 
 <div class="presente-section">
-<h2>Seu presente está a caminho 🤍</h2>
+<h2>Seu presente está a caminho ❤️</h2>
 
 <div class="presente-container" onclick="revelarPresente()">
 <img id="imagemPresente" src="presente.jpg" class="blur">
@@ -308,48 +285,48 @@ body::after{
 
 <div class="player-bar">
 <button class="play-btn" onclick="togglePlay()">▶</button>
+
 <div class="progress">
 <input type="range" id="progressBar" value="0">
 </div>
+
 <div class="time" id="currentTime">0:00</div>
+
+<div class="volume">
+<input type="range" min="0" max="1" step="0.01" value="0.4"
+onchange="musica.volume=this.value">
+</div>
 </div>
 
 <audio id="musica" src="love.mp3"></audio>
 
 <script>
 
-const musica = document.getElementById("musica");
-const progressBar = document.getElementById("progressBar");
-const currentTimeDisplay = document.getElementById("currentTime");
+const musica=document.getElementById("musica");
+const progressBar=document.getElementById("progressBar");
+const currentTimeDisplay=document.getElementById("currentTime");
 
 function checkPassword(){
-    if(document.getElementById("passwordInput").value === "0103"){
+    if(document.getElementById("passwordInput").value==="0103"){
         document.getElementById("password-screen").style.opacity="0";
-
         setTimeout(()=>{
             document.getElementById("password-screen").style.display="none";
             document.getElementById("main-content").style.display="block";
-
             musica.volume=0;
             musica.play();
-
-            let fade = setInterval(()=>{
-                if(musica.volume < 0.4){
-                    musica.volume += 0.02;
-                }else{
-                    clearInterval(fade);
-                }
+            let fade=setInterval(()=>{
+                if(musica.volume<0.4){
+                    musica.volume+=0.02;
+                }else clearInterval(fade);
             },200);
-
-        },600);
-
+        },800);
     }else{
-        alert("Data incorreta 🤍");
+        alert("Data incorreta ❤️");
     }
 }
 
 function togglePlay(){
-    const btn = document.querySelector(".play-btn");
+    const btn=document.querySelector(".play-btn");
     if(musica.paused){
         musica.play();
         btn.innerHTML="❚❚";
@@ -362,7 +339,6 @@ function togglePlay(){
 musica.addEventListener("timeupdate",()=>{
     progressBar.max=musica.duration;
     progressBar.value=musica.currentTime;
-
     let min=Math.floor(musica.currentTime/60);
     let sec=Math.floor(musica.currentTime%60);
     if(sec<10) sec="0"+sec;
