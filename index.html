@@ -1,127 +1,112 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para o amor da minha vida</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@300;400&display=swap" rel="stylesheet">
+<title>Para Você 🤍</title>
 
 <style>
 body{
     margin:0;
-    height:100vh;
-    background: #f4f1eb url("https://www.transparenttextures.com/patterns/paper-fibers.png");
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    overflow:hidden;
-    font-family:'Playfair Display', serif;
+    font-family: 'Arial', sans-serif;
+    background:#d8cec5;
+    text-align:center;
 }
 
 /* TELA DE SENHA */
 #password-screen{
-    position:absolute;
-    width:100%;
-    height:100%;
-    background: radial-gradient(circle at center, #f2e9e4, #e8ddd2);
+    position:fixed;
+    inset:0;
+    background:#d8cec5;
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
-    transition: opacity 1.5s ease;
+    z-index:9999;
 }
 
-#password-screen h1{
-    font-family:'Great Vibes', cursive;
-    font-size:60px;
-    margin:0;
-}
-
-#password-screen p{
-    opacity:0.7;
-    margin-top:10px;
-}
-
-input{
-    margin-top:20px;
-    padding:12px 25px;
+#password-screen input{
+    padding:15px;
     border-radius:30px;
     border:none;
-    text-align:center;
-    font-size:16px;
-}
-
-button{
-    margin-top:15px;
-    padding:10px 30px;
-    border-radius:30px;
-    border:none;
-    background:#d8b4a0;
-    cursor:pointer;
-    transition:0.3s;
-}
-
-button:hover{
-    background:#c69c86;
-}
-
-/* CARTA */
-#letter{
-    opacity:0;
-    transform:scale(0.9);
-    width:800px;
-    max-width:90%;
-    background:#fdfaf4;
-    padding:70px;
-    box-shadow:0 20px 50px rgba(0,0,0,0.15);
-    position:relative;
-    transition:all 2s ease;
-}
-
-#letter.show{
-    opacity:1;
-    transform:scale(1);
-}
-
-.date{
-    position:absolute;
-    top:25px;
-    left:40px;
-    font-size:14px;
-}
-
-.title{
-    font-family:'Great Vibes', cursive;
-    font-size:70px;
-    margin-top:40px;
-    margin-bottom:40px;
-}
-
-.text{
+    margin:20px 0;
     font-size:18px;
-    line-height:1.9;
+    text-align:center;
+    outline:none;
+}
+
+#password-screen button{
+    padding:12px 30px;
+    border:none;
+    border-radius:30px;
+    background:#c9a189;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+/* CONTEÚDO */
+#main-content{
+    display:none;
+    padding:40px 20px;
+}
+
+.carta{
+    max-width:600px;
+    margin:0 auto;
+    font-size:18px;
+    line-height:1.6;
+}
+
+/* BLOCO DO PRESENTE */
+.presente-container{
+    margin-top:80px;
+    position:relative;
+    display:inline-block;
+    cursor:pointer;
+}
+
+.presente-container img{
+    max-width:320px;
+    border-radius:20px;
+    transition:0.5s;
+}
+
+.blur{
+    filter:blur(20px);
+}
+
+.overlay-text{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    color:white;
+    font-size:20px;
+    font-weight:bold;
+    background:rgba(0,0,0,0.5);
+    padding:15px 25px;
+    border-radius:30px;
 }
 </style>
 </head>
 
 <body>
 
-<audio id="music" loop>
-  <source src="love.mp3.mp3" type="audio/mpeg">
-</audio>
-
+<!-- TELA DE SENHA -->
 <div id="password-screen">
     <h1>Meu amor 🤍</h1>
     <p>Digite nossa data especial</p>
-    <input type="password" id="password" placeholder="••••">
+    <input type="password" id="passwordInput" placeholder="••••">
     <button onclick="checkPassword()">Abrir</button>
 </div>
 
-<div id="letter">
-    <div class="date">Fev, 12, 2026</div>
-    <div class="title">Meu amor</div>
-    <div class="text">
+<!-- CONTEÚDO PRINCIPAL -->
+<div id="main-content">
+
+    <h1>Para você 🤍</h1>
+
+    <div class="carta">
 Quão belo é poder compartilhar o mesmo momento da história que você.
 Quão magnifico são os desencontros e encontros da vida que me levaram até os seus braços.
 É como se os meus dias soubessem que em algum ponto da minha história, chegaria você, pra mudar ela completamente.
@@ -140,28 +125,46 @@ Seguirei, por escolha, te amando por todos os meus dias, até o meu último dia.
 Tenha um feliz aniversário! Que a vida seja generosa contigo, da mesma forma que tu és comigo.
 Você é o amor da minha vida 🤍
     </div>
+
+    <!-- BLOCO DO PRESENTE -->
+    <div style="margin-top:100px;">
+        <h2>Seu presente está a caminho 🤍</h2>
+        <p>Clique na imagem para revelar</p>
+
+        <div class="presente-container" onclick="revelarPresente()">
+            <img id="imagemPresente" src="presente.jpg" class="blur">
+            <div id="overlayText" class="overlay-text">
+                Clique aqui 💌
+            </div>
+        </div>
+    </div>
+
 </div>
+
+<!-- MÚSICA -->
+<audio id="musica" src="love.mp3.mp3" loop></audio>
 
 <script>
 function checkPassword(){
-    var pass = document.getElementById("password").value;
+    const senha = document.getElementById("passwordInput").value;
 
-    if(pass === "0103"){  // você pode mudar a senha aqui
-        document.getElementById("password-screen").style.opacity = "0";
-        setTimeout(function(){
-            document.getElementById("password-screen").style.display = "none";
-        },1500);
+    if(senha === "0103"){ // MUDE PARA A DATA DE VOCÊS
+        document.getElementById("password-screen").style.display = "none";
+        document.getElementById("main-content").style.display = "block";
 
-        document.getElementById("letter").classList.add("show");
-
-        var music = document.getElementById("music");
-        music.play().catch(() => {
-            console.log("Autoplay bloqueado pelo navegador.");
+        const musica = document.getElementById("musica");
+        musica.play().catch(() => {
+            console.log("Autoplay bloqueado até interação.");
         });
 
-    }else{
-        alert("Senha incorreta 🤍");
+    } else {
+        alert("Data incorreta 🤍");
     }
+}
+
+function revelarPresente(){
+    document.getElementById("imagemPresente").classList.remove("blur");
+    document.getElementById("overlayText").style.display = "none";
 }
 </script>
 
