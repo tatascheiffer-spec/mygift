@@ -1,359 +1,255 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Meu Amor ❤️</title>
+<title>My bae</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Allura&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
-
-/* ================= BASE ================= */
-
-body{
-    margin:0;
-    font-family:'Playfair Display', serif;
-    background:#eae2d8;
-    overflow-x:hidden;
-    color:#3b352f;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* Fundo com profundidade */
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    background:radial-gradient(circle at center, rgba(0,0,0,0) 60%, rgba(0,0,0,0.15));
-    pointer-events:none;
+body {
+    font-family: 'Cormorant Garamond', serif;
+    background: #e9e4dc;
+    overflow-x: hidden;
 }
 
-/* Flores elegantes (aquarela suave) */
-.flor-top{
-    position:fixed;
-    top:-40px;
-    right:-40px;
-    width:420px;
-    opacity:0.25;
-    pointer-events:none;
+/* FUNDO FLORES */
+.background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: url('db13ced6-b846-4401-a7cd-5b4848534313.png') no-repeat center;
+    background-size: cover;
+    opacity: 0.15;
+    filter: blur(2px);
+    z-index: -1;
 }
 
-.flor-bottom{
-    position:fixed;
-    bottom:-40px;
-    left:-40px;
-    width:420px;
-    opacity:0.25;
-    transform:rotate(180deg);
-    pointer-events:none;
+/* TELA SENHA */
+#lockScreen {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #e9e4dc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 10;
 }
 
-/* ================= TELA DE SENHA ================= */
-
-#password-screen{
-    position:fixed;
-    inset:0;
-    background:#eae2d8;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    transition:opacity 0.8s ease;
+#lockScreen h2 {
+    font-weight: 300;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
 }
 
-#password-screen h1{
-    font-family:'Allura', cursive;
-    font-size:90px;
-    margin:0;
+input {
+    padding: 10px 20px;
+    border: none;
+    border-bottom: 1px solid #555;
+    background: transparent;
+    font-size: 18px;
+    text-align: center;
+    outline: none;
 }
 
-#password-screen input{
-    margin-top:30px;
-    padding:14px 25px;
-    width:220px;
-    text-align:center;
-    font-size:18px;
-    border:none;
-    border-bottom:1px solid #8b7b6b;
-    background:transparent;
-    outline:none;
+button {
+    margin-top: 20px;
+    padding: 8px 25px;
+    background: transparent;
+    border: 1px solid #555;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-#password-screen button{
-    margin-top:25px;
-    padding:10px 30px;
-    background:transparent;
-    border:1px solid #8b7b6b;
-    cursor:pointer;
-    transition:0.4s;
+button:hover {
+    background: #555;
+    color: white;
 }
 
-#password-screen button:hover{
-    background:#8b7b6b;
-    color:white;
+/* CARTA */
+.container {
+    padding: 80px 20px;
+    display: none;
+    text-align: center;
 }
 
-/* ================= CONTEÚDO ================= */
-
-#main-content{
-    display:none;
-    padding:140px 20px 200px 20px;
+.letter {
+    max-width: 750px;
+    margin: auto;
+    background: #fdfaf3;
+    padding: 60px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    position: relative;
+    transition: 0.5s ease;
 }
 
-/* Carta */
-.carta-container{
-    max-width:900px;
-    margin:auto;
-    background:#fdfaf5;
-    padding:100px;
-    box-shadow:
-        0 15px 40px rgba(0,0,0,0.15),
-        0 60px 100px rgba(0,0,0,0.25);
-    position:relative;
-    opacity:0;
-    transform:translateY(50px);
-    animation:fadeCarta 2s ease forwards;
+.letter:hover {
+    transform: translateY(-5px);
 }
 
-@keyframes fadeCarta{
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+.paper-texture {
+    position: absolute;
+    inset: 0;
+    background: url('https://www.transparenttextures.com/patterns/paper.png');
+    opacity: 0.4;
+    pointer-events: none;
 }
 
-.data{
-    font-size:14px;
-    opacity:0.6;
-    margin-bottom:40px;
+.date {
+    font-size: 14px;
+    margin-bottom: 20px;
 }
 
-.titulo{
-    font-family:'Allura', cursive;
-    font-size:95px;
-    margin-bottom:60px;
+.title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 42px;
+    margin-bottom: 40px;
 }
 
-.carta{
-    font-size:22px;
-    line-height:2;
+.letter p {
+    margin-bottom: 18px;
+    line-height: 1.7;
+    font-size: 20px;
 }
 
-/* ================= PRESENTE ================= */
-
-.presente-section{
-    margin-top:160px;
-    text-align:center;
+/* PLAYER */
+.player {
+    margin-top: 40px;
+    background: #f3eee5;
+    padding: 20px;
+    display: inline-block;
+    border-radius: 40px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
 }
 
-.presente-container{
-    margin-top:40px;
-    display:inline-block;
-    position:relative;
-    cursor:pointer;
+.player button {
+    border: none;
+    background: none;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 0 10px;
 }
 
-.presente-container img{
-    max-width:400px;
-    border-radius:8px;
-    transition:1s ease;
+/* FOTO */
+.photo-section {
+    margin-top: 60px;
+    text-align: center;
 }
 
-.blur{
-    filter:blur(25px);
+.photo-wrapper {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
 }
 
-.overlay-text{
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    background:rgba(0,0,0,0.5);
-    color:white;
-    padding:18px 40px;
-    border-radius:40px;
+.photo-wrapper img {
+    max-width: 500px;
+    border-radius: 10px;
+    filter: blur(10px);
+    transition: 0.8s;
 }
 
-/* ================= PLAYER MINIMAL ================= */
-
-.player-bar{
-    position:fixed;
-    bottom:0;
-    width:100%;
-    background:rgba(0,0,0,0.85);
-    padding:18px 40px;
-    display:flex;
-    align-items:center;
-    gap:20px;
+.photo-wrapper:hover img {
+    transform: scale(1.02);
 }
 
-.play-btn{
-    width:38px;
-    height:38px;
-    border-radius:50%;
-    border:none;
-    background:white;
-    cursor:pointer;
-    font-size:14px;
+.reveal-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 20px;
+    letter-spacing: 2px;
 }
 
-.progress input{
-    width:100%;
+.photo-wrapper.revealed img {
+    filter: blur(0);
 }
 
-.volume input{
-    width:100px;
+.photo-wrapper.revealed .reveal-text {
+    display: none;
 }
-
-.time{
-    color:#ccc;
-    font-size:12px;
-}
-
 </style>
 </head>
 
 <body>
 
-<img src="https://i.imgur.com/8Km9tLL.png" class="flor-top">
-<img src="https://i.imgur.com/8Km9tLL.png" class="flor-bottom">
+<div class="background"></div>
 
-<div id="password-screen">
-    <h1>Meu amor ❤️</h1>
-    <p>Digite nossa data especial</p>
+<div id="lockScreen">
+    <h2>Insira a nossa data especial</h2>
     <input type="password" id="passwordInput">
-    <button onclick="checkPassword()">Abrir</button>
+    <button onclick="checkPassword()">Entrar</button>
 </div>
 
-<div id="main-content">
+<div class="container" id="mainContent">
+    <div class="letter">
+        <div class="paper-texture"></div>
+        <div class="date">Feb 12, 2026</div>
+        <div class="title">My bae</div>
 
-<div class="carta-container">
-<div class="data">Fev, 12, 2026</div>
-<div class="titulo">Meu amor ❤️</div>
+        <p>Quão belo é poder compartilhar o mesmo momento da história que você.</p>
+        <p>Quão magnífico são os desencontros e encontros da vida que me levaram até os seus braços.</p>
+        <p>É como se os meus dias soubessem que em algum ponto da minha história, chegaria você, pra mudar ela completamente.</p>
+        <p>Você não chegou fazendo barulho, você chegou fazendo sentido.</p>
+        <p>Desde a tua chegada, tudo tomou o seu devido lugar.</p>
+        <p>Meu coração finalmente descansou com a sensação de quem volta pra casa. Em você encontrei o meu lar.</p>
+        <p>No brilho silencioso dos seus olhos, meu caminho foi de encontro ao teu.</p>
+        <p>Você acalma o caos em mim.</p>
+        <p>Você traz segurança, conforto e o sentimento de eternidade.</p>
+        <p>Você existe como quem atravessa: você não invade, não faz barulho, mas transforma tudo quando passa.</p>
+        <p>Hoje, não celebro apenas o seu aniversário, mas a sua essência, seu coração puro e bom...</p>
+        <p>Seguirei, por escolha, te amando por todos os meus dias, até o meu último dia.</p>
+        <p>Tenha um feliz aniversário!</p>
+        <p><strong>Você é o amor da minha vida ❤️</strong></p>
 
-<div class="carta">
-<p>
-        Quão belo é poder compartilhar o mesmo momento da história que você.
-        Quão magníficos foram os desencontros e encontros da vida que me levaram até os seus braços.
-        </p>
+        <div class="player">
+            <audio id="audio" src="love.mp3" autoplay loop></audio>
+            <button onclick="playMusic()">▶</button>
+            <button onclick="pauseMusic()">⏸</button>
+        </div>
+    </div>
 
-        <p>
-        É como se os meus dias soubessem que, em algum ponto da minha história, chegaria você para mudá-la completamente.
-        Você não chegou fazendo barulho, você chegou fazendo sentido.
-        </p>
-
-        <p>
-        Desde a tua chegada, tudo tomou o seu devido lugar.
-        Meu coração finalmente descansou com a sensação de quem volta para casa.
-        Em você encontrei o meu lar.
-        </p>
-
-        <p>
-        No brilho silencioso dos seus olhos, meu caminho foi de encontro ao teu.
-        Você acalma o caos em mim.
-        Você traz segurança, conforto e o sentimento de eternidade.
-        </p>
-
-        <p>
-        Hoje não celebro apenas o seu aniversário, mas a sua essência.
-        Celebro o homem forte, inteligente, responsável, dedicado e carinhoso que você é.
-        </p>
-
-        <p>
-        Seguirei sempre ao teu lado, te amando com tudo o que há em mim.
-        Se existe algo que o tempo confirmou, é que te amar é um lugar seguro.
-        </p>
-
-        <p>
-        Feliz aniversário, meu amor.
-        Que a vida seja generosa contigo da mesma forma que você é comigo.
-        Você é o amor da minha vida ❤️
-        </p>
+    <div class="photo-section">
+        <div class="photo-wrapper" onclick="revealPhoto(this)">
+            <img src="foto.jpg" alt="Nossa foto">
+            <div class="reveal-text">Clique para revelar</div>
+        </div>
+    </div>
 </div>
-</div>
-
-<div class="presente-section">
-<h2>Seu presente está a caminho ❤️</h2>
-
-<div class="presente-container" onclick="revelarPresente()">
-<img id="imagemPresente" src="presente.jpg" class="blur">
-<div id="overlayText" class="overlay-text">Clique para revelar 💌</div>
-</div>
-</div>
-
-</div>
-
-<div class="player-bar">
-<button class="play-btn" onclick="togglePlay()">▶</button>
-
-<div class="progress">
-<input type="range" id="progressBar" value="0">
-</div>
-
-<div class="time" id="currentTime">0:00</div>
-
-<div class="volume">
-<input type="range" min="0" max="1" step="0.01" value="0.4"
-onchange="musica.volume=this.value">
-</div>
-</div>
-
-<audio id="musica" src="love.mp3"></audio>
 
 <script>
-
-const musica=document.getElementById("musica");
-const progressBar=document.getElementById("progressBar");
-const currentTimeDisplay=document.getElementById("currentTime");
-
-function checkPassword(){
-    if(document.getElementById("passwordInput").value==="0103"){
-        document.getElementById("password-screen").style.opacity="0";
-        setTimeout(()=>{
-            document.getElementById("password-screen").style.display="none";
-            document.getElementById("main-content").style.display="block";
-            musica.volume=0;
-            musica.play();
-            let fade=setInterval(()=>{
-                if(musica.volume<0.4){
-                    musica.volume+=0.02;
-                }else clearInterval(fade);
-            },200);
-        },800);
-    }else{
-        alert("Data incorreta ❤️");
+function checkPassword() {
+    const password = document.getElementById("passwordInput").value;
+    if(password === "0103") {
+        document.getElementById("lockScreen").style.display = "none";
+        document.getElementById("mainContent").style.display = "block";
+    } else {
+        alert("Data incorreta 🤍");
     }
 }
 
-function togglePlay(){
-    const btn=document.querySelector(".play-btn");
-    if(musica.paused){
-        musica.play();
-        btn.innerHTML="❚❚";
-    }else{
-        musica.pause();
-        btn.innerHTML="▶";
-    }
+function playMusic() {
+    document.getElementById("audio").play();
 }
 
-musica.addEventListener("timeupdate",()=>{
-    progressBar.max=musica.duration;
-    progressBar.value=musica.currentTime;
-    let min=Math.floor(musica.currentTime/60);
-    let sec=Math.floor(musica.currentTime%60);
-    if(sec<10) sec="0"+sec;
-    currentTimeDisplay.innerText=min+":"+sec;
-});
-
-progressBar.addEventListener("input",()=>{
-    musica.currentTime=progressBar.value;
-});
-
-function revelarPresente(){
-    document.getElementById("imagemPresente").classList.remove("blur");
-    document.getElementById("overlayText").style.display="none";
+function pauseMusic() {
+    document.getElementById("audio").pause();
 }
 
+function revealPhoto(element) {
+    element.classList.toggle("revealed");
+}
 </script>
 
 </body>
