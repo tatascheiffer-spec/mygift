@@ -50,12 +50,6 @@ body::after{
     z-index:10;
 }
 
-#lockScreen h2{
-    font-weight:300;
-    margin-bottom:20px;
-    letter-spacing:2px;
-}
-
 input{
     padding:10px 20px;
     border:none;
@@ -104,21 +98,12 @@ button:hover{
     transition:0.5s;
 }
 
-.letter:hover{
-    transform:translateY(-6px);
-}
-
 .paper-texture{
     position:absolute;
     inset:0;
     background:url('https://www.transparenttextures.com/patterns/paper.png');
     opacity:0.4;
     pointer-events:none;
-}
-
-.date{
-    font-size:14px;
-    margin-bottom:20px;
 }
 
 .title{
@@ -149,10 +134,6 @@ button:hover{
     border-radius:10px;
     filter:blur(12px);
     transition:1s;
-}
-
-.photo-wrapper:hover img{
-    transform:scale(1.03);
 }
 
 .reveal-text{
@@ -191,11 +172,6 @@ button:hover{
     flex:1;
 }
 
-.music-info span{
-    font-size:16px;
-    letter-spacing:1px;
-}
-
 .progress-container{
     width:100%;
     height:4px;
@@ -209,7 +185,6 @@ button:hover{
     height:100%;
     width:0%;
     background:#6b4c3b;
-    transition:width 0.2s linear;
 }
 
 .controls button{
@@ -218,12 +193,6 @@ button:hover{
     font-size:20px;
     margin-left:15px;
     cursor:pointer;
-    transition:0.3s;
-}
-
-.controls button:hover{
-    transform:scale(1.2);
-    color:#6b4c3b;
 }
 </style>
 </head>
@@ -239,40 +208,25 @@ button:hover{
 </div>
 
 <div class="container" id="mainContent">
-
     <div class="letter">
         <div class="paper-texture"></div>
-        <div class="date">Feb 12, 2026</div>
         <div class="title">My bae</div>
 
         <p>Quão belo é poder compartilhar o mesmo momento da história que você.</p>
-        <p>Quão magnífico são os desencontros e encontros da vida que me levaram até os seus braços.</p>
-        <p>É como se os meus dias soubessem que em algum ponto da minha história, chegaria você, pra mudar ela completamente.</p>
         <p>Você não chegou fazendo barulho, você chegou fazendo sentido.</p>
-        <p>Desde a tua chegada, tudo tomou o seu devido lugar.</p>
-        <p>Meu coração finalmente descansou com a sensação de quem volta pra casa. Em você encontrei o meu lar.</p>
-        <p>No brilho silencioso dos seus olhos, meu caminho foi de encontro ao teu.</p>
-        <p>Você acalma o caos em mim.</p>
-        <p>Você traz segurança, conforto e o sentimento de eternidade.</p>
-        <p>Você existe como quem atravessa: você não invade, não faz barulho, mas transforma tudo quando passa.</p>
-        <p>Hoje, não celebro apenas o seu aniversário, mas a sua essência, seu coração puro e bom.</p>
-        <p>Seguirei sempre ao teu lado, te amando com tudo que há em mim.</p>
-        <p>Se existe algo que o tempo confirmou, é que te amar é um lugar seguro.</p>
-        <p>Seguirei, por escolha, te amando por todos os meus dias, até o meu último dia.</p>
-        <p>Tenha um feliz aniversário! Que a vida seja generosa contigo.</p>
+        <p>Meu coração finalmente descansou com a sensação de quem volta pra casa.</p>
         <p><strong>Você é o amor da minha vida ❤️</strong></p>
     </div>
 
     <div class="photo-section">
         <div class="photo-wrapper" onclick="revealPhoto(this)">
-            <img src="foto.jpg" alt="Nossa foto">
+            <!-- SE SUA FOTO FOR PNG TROQUE PARA foto.png -->
+            <img src="foto.jpg" alt="Nossa foto" onerror="this.src='foto.png'">
             <div class="reveal-text">Clique para revelar</div>
         </div>
     </div>
-
 </div>
 
-<!-- PLAYER -->
 <div class="music-bar">
     <div class="music-info">
         <span>Love – Taylor Olin</span>
@@ -284,35 +238,39 @@ button:hover{
         <button onclick="playMusic()">⏵</button>
         <button onclick="pauseMusic()">⏸</button>
     </div>
-    <audio id="audio" src="love.mp3" autoplay></audio>
+    <audio id="audio">
+        <source src="love.mp3" type="audio/mpeg">
+    </audio>
 </div>
 
 <script>
+const audio=document.getElementById("audio");
+const progress=document.querySelector(".progress");
+
 function checkPassword(){
     const password=document.getElementById("passwordInput").value;
     if(password==="0103"){
         document.getElementById("lockScreen").style.display="none";
         document.getElementById("mainContent").style.display="block";
-        audio.play();
+        audio.play().catch(()=>{});
     }else{
         alert("Data incorreta 🤍");
     }
 }
 
-function revealPhoto(el){
-    el.classList.toggle("revealed");
-}
-
-const audio=document.getElementById("audio");
-const progress=document.querySelector(".progress");
-
 audio.addEventListener("timeupdate",()=>{
-    const percent=(audio.currentTime/audio.duration)*100;
-    progress.style.width=percent+"%";
+    if(audio.duration){
+        const percent=(audio.currentTime/audio.duration)*100;
+        progress.style.width=percent+"%";
+    }
 });
 
 function playMusic(){audio.play();}
 function pauseMusic(){audio.pause();}
+
+function revealPhoto(el){
+    el.classList.toggle("revealed");
+}
 </script>
 
 </body>
