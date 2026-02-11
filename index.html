@@ -5,50 +5,43 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Meu Amor 🤍</title>
 
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@300;400;500&display=swap" rel="stylesheet">
+<!-- Fontes elegantes -->
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 
-/* =========================
-   CONFIGURAÇÃO GLOBAL
-========================= */
+/* ================= GERAL ================= */
 
 body{
     margin:0;
-    background:linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)),
+    font-family:'Cormorant Garamond', serif;
+    background:linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)),
     url("https://www.transparenttextures.com/patterns/cream-paper.png");
     background-color:#d8cec5;
-    font-family:'Playfair Display', serif;
-    color:#3a3a3a;
-    overflow-x:hidden;
+    color:#3e3a37;
 }
 
-/* =========================
-   TELA DE SENHA
-========================= */
+/* ================= TELA DE SENHA ================= */
 
 #password-screen{
     position:fixed;
     inset:0;
-    background:linear-gradient(135deg,#e4d9cf,#cbb8a9);
+    background:linear-gradient(135deg,#e7ddd4,#cbb8a9);
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
     z-index:9999;
     text-align:center;
-    animation:fadeIn 1.5s ease;
 }
 
 #password-screen h1{
-    font-family:'Great Vibes', cursive;
-    font-size:60px;
+    font-family:'Allura', cursive;
+    font-size:70px;
     margin:0;
 }
 
 #password-screen p{
-    margin-top:10px;
     font-size:18px;
     opacity:0.8;
 }
@@ -61,7 +54,6 @@ body{
     font-size:20px;
     text-align:center;
     outline:none;
-    background:white;
     width:220px;
 }
 
@@ -69,7 +61,7 @@ body{
     padding:12px 35px;
     border:none;
     border-radius:40px;
-    background:#b08a73;
+    background:#a8816c;
     color:white;
     font-size:16px;
     cursor:pointer;
@@ -78,31 +70,54 @@ body{
 
 #password-screen button:hover{
     transform:scale(1.05);
-    background:#9b7660;
 }
 
-/* =========================
-   CONTEÚDO PRINCIPAL
-========================= */
+/* ================= CONTEÚDO ================= */
 
 #main-content{
     display:none;
-    padding:80px 20px;
-    animation:fadeIn 2s ease;
+    padding:100px 20px 150px 20px;
 }
 
 /* Carta */
 
 .carta-container{
-    max-width:800px;
+    max-width:850px;
     margin:0 auto;
-    background:url("https://www.transparenttextures.com/patterns/paper-fibers.png");
-    background-color:#f5efe8;
-    padding:60px;
-    border-radius:10px;
-    box-shadow:0 30px 60px rgba(0,0,0,0.25);
+    background:#f8f2eb;
+    padding:70px;
+    border-radius:8px;
+    box-shadow:0 40px 80px rgba(0,0,0,0.2);
     position:relative;
-    animation:fadeUp 2s ease;
+}
+
+/* Flores laterais estilo aquarela */
+
+.carta-container::before{
+    content:"";
+    position:absolute;
+    top:-60px;
+    left:-60px;
+    width:200px;
+    height:200px;
+    background:url("https://pngimg.com/uploads/rose/rose_PNG667.png");
+    background-size:contain;
+    background-repeat:no-repeat;
+    opacity:0.35;
+}
+
+.carta-container::after{
+    content:"";
+    position:absolute;
+    bottom:-60px;
+    right:-60px;
+    width:200px;
+    height:200px;
+    background:url("https://pngimg.com/uploads/rose/rose_PNG667.png");
+    background-size:contain;
+    background-repeat:no-repeat;
+    opacity:0.35;
+    transform:rotate(180deg);
 }
 
 .data{
@@ -112,70 +127,17 @@ body{
 }
 
 .titulo{
-    font-family:'Great Vibes', cursive;
-    font-size:60px;
-    margin:0 0 40px 0;
+    font-family:'Allura', cursive;
+    font-size:70px;
+    margin-bottom:40px;
 }
 
 .carta{
-    line-height:1.9;
-    font-size:18px;
+    font-size:22px;
+    line-height:2;
 }
 
-/* Flores decorativas */
-
-.carta-container::before{
-    content:"";
-    position:absolute;
-    top:-40px;
-    right:-40px;
-    width:150px;
-    height:150px;
-    background:url("https://pngimg.com/uploads/rose/rose_PNG669.png");
-    background-size:contain;
-    background-repeat:no-repeat;
-    opacity:0.5;
-}
-
-.carta-container::after{
-    content:"";
-    position:absolute;
-    bottom:-40px;
-    left:-40px;
-    width:150px;
-    height:150px;
-    background:url("https://pngimg.com/uploads/rose/rose_PNG669.png");
-    background-size:contain;
-    background-repeat:no-repeat;
-    opacity:0.4;
-}
-
-/* =========================
-   PLAYER
-========================= */
-
-.player{
-    margin-top:40px;
-    text-align:center;
-}
-
-.player button{
-    background:#b08a73;
-    border:none;
-    color:white;
-    padding:8px 15px;
-    margin:5px;
-    border-radius:20px;
-    cursor:pointer;
-}
-
-.player input{
-    width:100px;
-}
-
-/* =========================
-   PRESENTE
-========================= */
+/* ================= PRESENTE ================= */
 
 .presente-section{
     margin-top:120px;
@@ -190,13 +152,13 @@ body{
 }
 
 .presente-container img{
-    max-width:350px;
-    border-radius:15px;
+    max-width:380px;
+    border-radius:12px;
     transition:0.8s ease;
 }
 
 .blur{
-    filter:blur(20px);
+    filter:blur(25px);
 }
 
 .overlay-text{
@@ -206,22 +168,36 @@ body{
     transform:translate(-50%,-50%);
     background:rgba(0,0,0,0.6);
     color:white;
-    padding:15px 30px;
+    padding:18px 35px;
     border-radius:30px;
+    font-size:18px;
 }
 
-/* =========================
-   ANIMAÇÕES
-========================= */
+/* ================= PLAYER FIXO ESTILO SPOTIFY ================= */
 
-@keyframes fadeIn{
-    from{opacity:0}
-    to{opacity:1}
+.player-bar{
+    position:fixed;
+    bottom:0;
+    width:100%;
+    background:#181818;
+    padding:15px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:20px;
+    box-shadow:0 -10px 30px rgba(0,0,0,0.4);
 }
 
-@keyframes fadeUp{
-    from{opacity:0; transform:translateY(40px)}
-    to{opacity:1; transform:translateY(0)}
+.player-bar button{
+    background:none;
+    border:none;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+}
+
+.player-bar input{
+    width:120px;
 }
 
 </style>
@@ -229,10 +205,10 @@ body{
 
 <body>
 
-<!-- TELA DE SENHA -->
+<!-- SENHA -->
 <div id="password-screen">
     <h1>Meu amor 🤍</h1>
-    <p>Digite nossa data especial (primeira vez que nos vimos)</p>
+    <p>Digite nossa data especial</p>
     <input type="password" id="passwordInput" placeholder="••••">
     <button onclick="checkPassword()">Abrir</button>
 </div>
@@ -241,7 +217,7 @@ body{
 <div id="main-content">
 
     <div class="carta-container">
-        <div class="data">Fev, 12, 2026</div>
+        <div class="data">12 de Fevereiro de 2026</div>
         <div class="titulo">Meu amor 🤍</div>
 
         <div class="carta">
@@ -285,15 +261,6 @@ body{
         </div>
     </div>
 
-    <!-- PLAYER -->
-    <div class="player">
-        <button onclick="playMusic()">Play</button>
-        <button onclick="pauseMusic()">Pause</button>
-        Volume:
-        <input type="range" min="0" max="1" step="0.01" onchange="setVolume(this.value)">
-    </div>
-
-    <!-- PRESENTE -->
     <div class="presente-section">
         <h2>Seu presente está a caminho 🤍</h2>
 
@@ -307,6 +274,13 @@ body{
 
 </div>
 
+<!-- PLAYER FIXO -->
+<div class="player-bar">
+    <button onclick="togglePlay()">▶</button>
+    <input type="range" min="0" max="1" step="0.01" value="0.4"
+           onchange="setVolume(this.value)">
+</div>
+
 <audio id="musica" src="love.mp3" loop></audio>
 
 <script>
@@ -314,7 +288,7 @@ body{
 function checkPassword(){
     const senha = document.getElementById("passwordInput").value;
 
-    if(senha === "0103"){ // coloque sua data aqui
+    if(senha === "0103"){ 
         document.getElementById("password-screen").style.display = "none";
         document.getElementById("main-content").style.display = "block";
 
@@ -331,12 +305,13 @@ function revelarPresente(){
     document.getElementById("overlayText").style.display = "none";
 }
 
-function playMusic(){
-    document.getElementById("musica").play();
-}
-
-function pauseMusic(){
-    document.getElementById("musica").pause();
+function togglePlay(){
+    const musica = document.getElementById("musica");
+    if(musica.paused){
+        musica.play();
+    } else {
+        musica.pause();
+    }
 }
 
 function setVolume(valor){
