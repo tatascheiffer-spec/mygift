@@ -14,9 +14,10 @@
 body{
     margin:0;
     font-family:'Cormorant Garamond', serif;
-    background:#efe7dd;
-    background-image:
+    background:
+        radial-gradient(circle at center, rgba(0,0,0,0) 60%, rgba(0,0,0,0.15)),
         url("https://www.transparenttextures.com/patterns/handmade-paper.png");
+    background-color:#efe7dd;
     color:#3a342f;
     overflow-x:hidden;
 }
@@ -43,7 +44,7 @@ body::after{
     bottom:0;
     width:500px;
     height:500px;
-    background:url("https://pngimg.com/uploads/rose/rose_PNG667.png") no-repeat;
+    background:url("https://i.imgur.com/8Km9tLL.png") no-repeat;
     background-size:contain;
     opacity:0.18;
     transform:rotate(180deg);
@@ -112,9 +113,19 @@ body::after{
     transition:0.6s;
 }
 
-.carta-container:hover{
-    transform:translateY(-8px);
+.carta-container{
+    opacity:0;
+    transform:translateY(40px);
+    animation:fadeInCarta 1.8s ease forwards;
 }
+
+@keyframes fadeInCarta{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
 
 .carta-container::after{
     content:"";
@@ -185,39 +196,45 @@ body::after{
     position:fixed;
     bottom:0;
     width:100%;
-    background:#181818;
-    padding:18px 40px;
+    background:#121212;
+    padding:15px 40px;
     display:flex;
     align-items:center;
     gap:25px;
-    box-shadow:0 -10px 40px rgba(0,0,0,0.4);
 }
 
 .play-btn{
-    width:45px;
-    height:45px;
+    width:42px;
+    height:42px;
     border-radius:50%;
     background:#1db954;
     border:none;
     cursor:pointer;
-    font-size:18px;
+    font-size:16px;
     display:flex;
     align-items:center;
     justify-content:center;
 }
 
-.progress{
-    flex:1;
-}
-
 .progress input{
     width:100%;
+    accent-color:#1db954;
 }
 
-.time{
-    color:#ccc;
-    font-size:13px;
+.volume{
+    width:100px;
 }
+
+.volume input{
+    width:100%;
+    accent-color:#1db954;
+}
+    
+<div class="volume">
+    <input type="range" min="0" max="1" step="0.01" value="0.4"
+    onchange="musica.volume=this.value">
+</div>
+
 
 </style>
 </head>
@@ -307,9 +324,25 @@ const currentTimeDisplay = document.getElementById("currentTime");
 
 function checkPassword(){
     if(document.getElementById("passwordInput").value === "0103"){
-        document.getElementById("password-screen").style.display="none";
-        document.getElementById("main-content").style.display="block";
-        musica.play();
+        document.getElementById("password-screen").style.opacity="0";
+
+        setTimeout(()=>{
+            document.getElementById("password-screen").style.display="none";
+            document.getElementById("main-content").style.display="block";
+
+            musica.volume=0;
+            musica.play();
+
+            let fade = setInterval(()=>{
+                if(musica.volume < 0.4){
+                    musica.volume += 0.02;
+                }else{
+                    clearInterval(fade);
+                }
+            },200);
+
+        },600);
+
     }else{
         alert("Data incorreta 🤍");
     }
