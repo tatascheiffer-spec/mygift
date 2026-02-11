@@ -1,123 +1,155 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Meu Amor</title>
+<title>Para o amor da minha vida</title>
 
-<!-- Fontes -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
 body {
     margin: 0;
     height: 100vh;
+    background: url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+    background-color: #f4f1eb;
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
-    background-color: #f6f1e8;
     font-family: 'Playfair Display', serif;
 }
 
-/* Container geral */
-.card {
-    width: 800px;
-    max-width: 90%;
-    background: #fdfaf3;
-    padding: 60px;
-    position: relative;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-    overflow: hidden;
-}
-
-/* Data */
-.date {
+/* Tela senha */
+#password-screen {
     position: absolute;
-    top: 30px;
-    left: 60px;
-    font-size: 14px;
-    color: #444;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, #f3eaea, #e9dfd5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 2s ease;
 }
 
-/* Título */
-.title {
+#password-screen h2 {
     font-family: 'Great Vibes', cursive;
     font-size: 60px;
-    margin-top: 40px;
+    margin-bottom: 10px;
 }
 
-/* Texto */
-.letter {
-    margin-top: 30px;
-    line-height: 1.8;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 1.5s ease;
-}
-
-/* Mostrar carta */
-.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Tela de senha */
-.login {
-    text-align: center;
-}
-
-.login h2 {
-    font-family: 'Great Vibes', cursive;
-    font-size: 50px;
+#password-screen p {
+    opacity: 0.7;
 }
 
 input {
-    padding: 12px;
+    margin-top: 15px;
+    padding: 12px 20px;
+    border-radius: 30px;
     border: none;
-    border-bottom: 1px solid #aaa;
-    background: transparent;
-    font-family: inherit;
     text-align: center;
-    margin-top: 20px;
+    font-size: 16px;
+    background: #fff;
 }
 
 button {
-    margin-top: 20px;
+    margin-top: 15px;
     padding: 10px 25px;
+    border-radius: 30px;
     border: none;
-    background: #c8a97e;
-    color: white;
+    background: #d6b2b2;
     cursor: pointer;
+    transition: 0.3s;
 }
 
 button:hover {
-    background: #b08d63;
+    background: #c79a9a;
 }
 
-.hidden {
+/* Carta */
+#letter {
     display: none;
+    width: 800px;
+    max-width: 90%;
+    background: #f8f5ef;
+    padding: 70px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+    position: relative;
+    animation: openLetter 2s ease forwards;
+}
+
+@keyframes openLetter {
+    from { opacity: 0; transform: scale(0.8) rotateX(40deg);}
+    to { opacity: 1; transform: scale(1) rotateX(0);}
+}
+
+.date {
+    position: absolute;
+    top: 25px;
+    left: 40px;
+    font-size: 14px;
+    opacity: 0;
+    animation: fadeIn 3s ease forwards;
+    animation-delay: 1s;
+}
+
+.title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 70px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeIn 3s ease forwards;
+    animation-delay: 2s;
+}
+
+.text {
+    font-size: 18px;
+    line-height: 1.9;
+    opacity: 0;
+    animation: fadeIn 3s ease forwards;
+    animation-delay: 3s;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+/* Pétalas */
+.petal {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: rgba(214, 153, 153, 0.6);
+    border-radius: 50%;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    0% { transform: translateY(-10px) rotate(0); }
+    100% { transform: translateY(100vh) rotate(360deg); }
 }
 </style>
 </head>
 
 <body>
 
-<div class="card">
+<audio id="music" loop>
+<source src="love.mp3" type="audio/mpeg">
+</audio>
 
-    <div class="date">Fev 12, 2026</div>
+<div id="password-screen">
+    <h2>Meu amor 🤍</h2>
+    <p>Digite a data do nosso primeiro encontro</p>
+    <input type="password" id="password">
+    <button onclick="checkPassword()">Abrir</button>
+</div>
 
-    <!-- Tela de senha -->
-    <div class="login" id="login">
-        <h2>Meu amor</h2>
-        <p>Digite a senha para abrir sua carta</p>
-        <input type="password" id="password" placeholder="Senha">
-        <br>
-        <button onclick="unlock()">Abrir</button>
-    </div>
-
-    <!-- Carta -->
-    <div class="letter hidden" id="letter">
+<div id="letter">
+    <div class="date">Fev, 12, 2026</div>
+    <div class="title">Meu amor</div>
+    <div class="text">
 Quão belo é poder compartilhar o mesmo momento da história que você.
 Quão magnifico são os desencontros e encontros da vida que me levaram até os seus braços.
 É como se os meus dias soubessem que em algum ponto da minha história, chegaria você, pra mudar ela completamente.
@@ -136,37 +168,10 @@ Seguirei, por escolha, te amando por todos os meus dias, até o meu último dia.
 Tenha um feliz aniversário! Que a vida seja generosa contigo, da mesma forma que tu és comigo.
 Você é o amor da minha vida 🤍
     </div>
-
 </div>
 
-<!-- Música -->
-<iframe width="0" height="0" 
-src="https://www.youtube.com/embed/ID_DO_VIDEO?autoplay=1&loop=1&playlist=ID_DO_VIDEO"
-frameborder="0"
-allow="autoplay">
-</iframe>
-
 <script>
-function unlock() {
-    var password = document.getElementById("password").value;
-    if (password === "0103") {
+function checkPassword() {
+    var pass = document.getElementById("password").value;
 
-        document.getElementById("login").classList.add("hidden");
-
-        let letter = document.getElementById("letter");
-        letter.classList.remove("hidden");
-
-        setTimeout(() => {
-            letter.classList.add("show");
-        }, 100);
-
-        document.getElementById("music").play();
-
-    } else {
-        alert("Senha incorreta 🤍");
-    }
-}
-</script>
-
-</body>
-</html>
+    if(pass === "0103") {
