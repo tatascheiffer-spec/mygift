@@ -8,9 +8,10 @@
 <style>
 body{
     margin:0;
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, sans-serif;
     background:#d8cec5;
     text-align:center;
+    color:#3e3e3e;
 }
 
 /* TELA DE SENHA */
@@ -22,7 +23,6 @@ body{
     flex-direction:column;
     justify-content:center;
     align-items:center;
-    z-index:9999;
 }
 
 #password-screen input{
@@ -33,6 +33,7 @@ body{
     font-size:18px;
     text-align:center;
     outline:none;
+    width:200px;
 }
 
 #password-screen button{
@@ -48,17 +49,18 @@ body{
 /* CONTEÚDO */
 #main-content{
     display:none;
-    padding:40px 20px;
+    padding:40px 20px 100px 20px;
 }
 
 .carta{
-    max-width:600px;
+    max-width:700px;
     margin:0 auto;
     font-size:18px;
-    line-height:1.6;
+    line-height:1.7;
+    text-align:justify;
 }
 
-/* BLOCO DO PRESENTE */
+/* PRESENTE */
 .presente-container{
     margin-top:80px;
     position:relative;
@@ -82,7 +84,7 @@ body{
     left:50%;
     transform:translate(-50%,-50%);
     color:white;
-    font-size:20px;
+    font-size:18px;
     font-weight:bold;
     background:rgba(0,0,0,0.5);
     padding:15px 25px;
@@ -97,36 +99,56 @@ body{
 <div id="password-screen">
     <h1>Meu amor 🤍</h1>
     <p>Digite nossa data especial</p>
-    <input type="password" id="passwordInput" placeholder="••••">
+    <input type="password" id="passwordInput" placeholder="••••" onkeypress="if(event.key==='Enter'){checkPassword()}">
     <button onclick="checkPassword()">Abrir</button>
 </div>
 
-<!-- CONTEÚDO PRINCIPAL -->
+<!-- CONTEÚDO -->
 <div id="main-content">
 
     <h1>Para você 🤍</h1>
 
     <div class="carta">
-Quão belo é poder compartilhar o mesmo momento da história que você.
-Quão magnifico são os desencontros e encontros da vida que me levaram até os seus braços.
-É como se os meus dias soubessem que em algum ponto da minha história, chegaria você, pra mudar ela completamente.
-Você não chegou fazendo barulho, você chegou fazendo sentido.
-Desde a tua chegada, tudo tomou o seu devido lugar. 
-Meu coração finalmente descansou com a sensação de quem volta pra casa. Em você encontrei o meu lar.
-No brilho silencioso dos seus olhos, meu caminho foi de encontro ao teu. 
-Você acalma o caos em mim. 
-Você traz segurança, conforto e o sentimento de eternidade.
-Você existe como quem atravessa: você não invade, não faz barulho, mas transforma tudo quando passa.
-Hoje, não celebro apenas o seu aniversário, mas a sua essencia, seu coração puro e bom. Celebro o homem que você é, bom e forte. Um homem inteligente, responsável, dedicado, carinhoso, cuidadoso, entre tantas qualidades inerentes a ti. 
-Que você receba de volta tudo o que doa, muitas vezes sem nem perceber.
-Seguirei sempre ao teu lado, te amando com tudo que há em mim.
-Se existe algo que o tempo confirmou, é que te amar é um lugar seguro.
-Seguirei, por escolha, te amando por todos os meus dias, até o meu último dia.
-Tenha um feliz aniversário! Que a vida seja generosa contigo, da mesma forma que tu és comigo.
-Você é o amor da minha vida 🤍
+        <p>
+        Quão belo é poder compartilhar o mesmo momento da história que você.
+        Quão magníficos foram os desencontros e encontros da vida que me levaram até os seus braços.
+        </p>
+
+        <p>
+        É como se os meus dias soubessem que, em algum ponto da minha história, chegaria você para mudá-la completamente.
+        Você não chegou fazendo barulho, você chegou fazendo sentido.
+        </p>
+
+        <p>
+        Desde a tua chegada, tudo tomou o seu devido lugar.
+        Meu coração finalmente descansou com a sensação de quem volta para casa.
+        Em você encontrei o meu lar.
+        </p>
+
+        <p>
+        No brilho silencioso dos seus olhos, meu caminho foi de encontro ao teu.
+        Você acalma o caos em mim.
+        Você traz segurança, conforto e o sentimento de eternidade.
+        </p>
+
+        <p>
+        Hoje não celebro apenas o seu aniversário, mas a sua essência.
+        Celebro o homem forte, inteligente, responsável, dedicado e carinhoso que você é.
+        </p>
+
+        <p>
+        Seguirei sempre ao teu lado, te amando com tudo o que há em mim.
+        Se existe algo que o tempo confirmou, é que te amar é um lugar seguro.
+        </p>
+
+        <p>
+        Feliz aniversário, meu amor.
+        Que a vida seja generosa contigo da mesma forma que você é comigo.
+        Você é o amor da minha vida 🤍
+        </p>
     </div>
 
-    <!-- BLOCO DO PRESENTE -->
+    <!-- PRESENTE -->
     <div style="margin-top:100px;">
         <h2>Seu presente está a caminho 🤍</h2>
         <p>Clique na imagem para revelar</p>
@@ -146,9 +168,9 @@ Você é o amor da minha vida 🤍
 
 <script>
 function checkPassword(){
-    const senha = document.getElementById("passwordInput").value;
+    const senha = document.getElementById("passwordInput").value.trim();
 
-    if(senha === "0103"){ // MUDE PARA A DATA DE VOCÊS
+    if(senha === "0103"){ // coloque a data correta aqui
         document.getElementById("password-screen").style.display = "none";
         document.getElementById("main-content").style.display = "block";
 
