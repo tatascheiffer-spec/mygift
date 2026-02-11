@@ -3,75 +3,196 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para Você 🤍</title>
+<title>Meu Amor 🤍</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
+
+/* =========================
+   CONFIGURAÇÃO GLOBAL
+========================= */
+
 body{
     margin:0;
-    font-family: Arial, sans-serif;
-    background:#d8cec5;
-    text-align:center;
-    color:#3e3e3e;
+    background:linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)),
+    url("https://www.transparenttextures.com/patterns/cream-paper.png");
+    background-color:#d8cec5;
+    font-family:'Playfair Display', serif;
+    color:#3a3a3a;
+    overflow-x:hidden;
 }
 
-/* TELA DE SENHA */
+/* =========================
+   TELA DE SENHA
+========================= */
+
 #password-screen{
     position:fixed;
     inset:0;
-    background:#d8cec5;
+    background:linear-gradient(135deg,#e4d9cf,#cbb8a9);
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
+    z-index:9999;
+    text-align:center;
+    animation:fadeIn 1.5s ease;
+}
+
+#password-screen h1{
+    font-family:'Great Vibes', cursive;
+    font-size:60px;
+    margin:0;
+}
+
+#password-screen p{
+    margin-top:10px;
+    font-size:18px;
+    opacity:0.8;
 }
 
 #password-screen input{
-    padding:15px;
-    border-radius:30px;
+    padding:15px 25px;
+    border-radius:40px;
     border:none;
-    margin:20px 0;
-    font-size:18px;
+    margin:25px 0;
+    font-size:20px;
     text-align:center;
     outline:none;
-    width:200px;
+    background:white;
+    width:220px;
 }
 
 #password-screen button{
-    padding:12px 30px;
+    padding:12px 35px;
     border:none;
-    border-radius:30px;
-    background:#c9a189;
+    border-radius:40px;
+    background:#b08a73;
     color:white;
     font-size:16px;
     cursor:pointer;
+    transition:0.3s;
 }
 
-/* CONTEÚDO */
+#password-screen button:hover{
+    transform:scale(1.05);
+    background:#9b7660;
+}
+
+/* =========================
+   CONTEÚDO PRINCIPAL
+========================= */
+
 #main-content{
     display:none;
-    padding:40px 20px 100px 20px;
+    padding:80px 20px;
+    animation:fadeIn 2s ease;
+}
+
+/* Carta */
+
+.carta-container{
+    max-width:800px;
+    margin:0 auto;
+    background:url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+    background-color:#f5efe8;
+    padding:60px;
+    border-radius:10px;
+    box-shadow:0 30px 60px rgba(0,0,0,0.25);
+    position:relative;
+    animation:fadeUp 2s ease;
+}
+
+.data{
+    font-size:14px;
+    opacity:0.6;
+    margin-bottom:30px;
+}
+
+.titulo{
+    font-family:'Great Vibes', cursive;
+    font-size:60px;
+    margin:0 0 40px 0;
 }
 
 .carta{
-    max-width:700px;
-    margin:0 auto;
+    line-height:1.9;
     font-size:18px;
-    line-height:1.7;
-    text-align:justify;
 }
 
-/* PRESENTE */
+/* Flores decorativas */
+
+.carta-container::before{
+    content:"";
+    position:absolute;
+    top:-40px;
+    right:-40px;
+    width:150px;
+    height:150px;
+    background:url("https://pngimg.com/uploads/rose/rose_PNG669.png");
+    background-size:contain;
+    background-repeat:no-repeat;
+    opacity:0.5;
+}
+
+.carta-container::after{
+    content:"";
+    position:absolute;
+    bottom:-40px;
+    left:-40px;
+    width:150px;
+    height:150px;
+    background:url("https://pngimg.com/uploads/rose/rose_PNG669.png");
+    background-size:contain;
+    background-repeat:no-repeat;
+    opacity:0.4;
+}
+
+/* =========================
+   PLAYER
+========================= */
+
+.player{
+    margin-top:40px;
+    text-align:center;
+}
+
+.player button{
+    background:#b08a73;
+    border:none;
+    color:white;
+    padding:8px 15px;
+    margin:5px;
+    border-radius:20px;
+    cursor:pointer;
+}
+
+.player input{
+    width:100px;
+}
+
+/* =========================
+   PRESENTE
+========================= */
+
+.presente-section{
+    margin-top:120px;
+    text-align:center;
+}
+
 .presente-container{
-    margin-top:80px;
+    margin-top:30px;
     position:relative;
     display:inline-block;
     cursor:pointer;
 }
 
 .presente-container img{
-    max-width:320px;
-    border-radius:20px;
-    transition:0.5s;
+    max-width:350px;
+    border-radius:15px;
+    transition:0.8s ease;
 }
 
 .blur{
@@ -83,13 +204,26 @@ body{
     top:50%;
     left:50%;
     transform:translate(-50%,-50%);
+    background:rgba(0,0,0,0.6);
     color:white;
-    font-size:18px;
-    font-weight:bold;
-    background:rgba(0,0,0,0.5);
-    padding:15px 25px;
+    padding:15px 30px;
     border-radius:30px;
 }
+
+/* =========================
+   ANIMAÇÕES
+========================= */
+
+@keyframes fadeIn{
+    from{opacity:0}
+    to{opacity:1}
+}
+
+@keyframes fadeUp{
+    from{opacity:0; transform:translateY(40px)}
+    to{opacity:1; transform:translateY(0)}
+}
+
 </style>
 </head>
 
@@ -99,17 +233,19 @@ body{
 <div id="password-screen">
     <h1>Meu amor 🤍</h1>
     <p>Digite nossa data especial (primeira vez que nos vimos)</p>
-    <input type="password" id="passwordInput" placeholder="••••" onkeypress="if(event.key==='Enter'){checkPassword()}">
+    <input type="password" id="passwordInput" placeholder="••••">
     <button onclick="checkPassword()">Abrir</button>
 </div>
 
 <!-- CONTEÚDO -->
 <div id="main-content">
 
-    <h1>Para você 🤍</h1>
+    <div class="carta-container">
+        <div class="data">Fev, 12, 2026</div>
+        <div class="titulo">Meu amor 🤍</div>
 
-    <div class="carta">
-        <p>
+        <div class="carta">
+            <p>
         Quão belo é poder compartilhar o mesmo momento da história que você.
         Quão magníficos foram os desencontros e encontros da vida que me levaram até os seus braços.
         </p>
@@ -146,39 +282,45 @@ body{
         Que a vida seja generosa contigo da mesma forma que você é comigo.
         Você é o amor da minha vida 🤍
         </p>
+        </div>
+    </div>
+
+    <!-- PLAYER -->
+    <div class="player">
+        <button onclick="playMusic()">Play</button>
+        <button onclick="pauseMusic()">Pause</button>
+        Volume:
+        <input type="range" min="0" max="1" step="0.01" onchange="setVolume(this.value)">
     </div>
 
     <!-- PRESENTE -->
-    <div style="margin-top:100px;">
+    <div class="presente-section">
         <h2>Seu presente está a caminho 🤍</h2>
-        <p>Clique na imagem para revelar</p>
 
         <div class="presente-container" onclick="revelarPresente()">
             <img id="imagemPresente" src="presente.jpg" class="blur">
             <div id="overlayText" class="overlay-text">
-                Clique aqui 💌
+                Clique para revelar 💌
             </div>
         </div>
     </div>
 
 </div>
 
-<!-- MÚSICA -->
-<audio id="musica" src="love.mp3.mp3" loop></audio>
+<audio id="musica" src="love.mp3" loop></audio>
 
 <script>
-function checkPassword(){
-    const senha = document.getElementById("passwordInput").value.trim();
 
-    if(senha === "0103"){ // coloque a data correta aqui
+function checkPassword(){
+    const senha = document.getElementById("passwordInput").value;
+
+    if(senha === "0103"){ // coloque sua data aqui
         document.getElementById("password-screen").style.display = "none";
         document.getElementById("main-content").style.display = "block";
 
         const musica = document.getElementById("musica");
-        musica.play().catch(() => {
-            console.log("Autoplay bloqueado até interação.");
-        });
-
+        musica.volume = 0.4;
+        musica.play();
     } else {
         alert("Data incorreta 🤍");
     }
@@ -188,6 +330,19 @@ function revelarPresente(){
     document.getElementById("imagemPresente").classList.remove("blur");
     document.getElementById("overlayText").style.display = "none";
 }
+
+function playMusic(){
+    document.getElementById("musica").play();
+}
+
+function pauseMusic(){
+    document.getElementById("musica").pause();
+}
+
+function setVolume(valor){
+    document.getElementById("musica").volume = valor;
+}
+
 </script>
 
 </body>
