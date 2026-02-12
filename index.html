@@ -1,97 +1,183 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My bae 💌</title>
+<title>My bae</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-font-family:'Playfair Display', serif;
-background:black;
-color:white;
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-overflow:hidden;
+body {
+    font-family: 'Cormorant Garamond', serif;
+    background: #e9e4dc;
+    overflow-x: hidden;
 }
 
-/* FUNDO BLUR (USA presente.jpg) */
-.background{
-position:fixed;
-width:100%;
-height:100%;
-background:url("presente.jpg") center/cover no-repeat;
-filter:blur(25px) brightness(0.6);
-z-index:-1;
+/* FUNDO FLORES */
+.background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: url('db13ced6-b846-4401-a7cd-5b4848534313.png') no-repeat center;
+    background-size: cover;
+    opacity: 0.15;
+    filter: blur(2px);
+    z-index: -1;
+}
+
+/* TELA SENHA */
+#lockScreen {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #e9e4dc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 10;
+}
+
+#lockScreen h2 {
+    font-weight: 300;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+input {
+    padding: 10px 20px;
+    border: none;
+    border-bottom: 1px solid #555;
+    background: transparent;
+    font-size: 18px;
+    text-align: center;
+    outline: none;
+}
+
+button {
+    margin-top: 20px;
+    padding: 8px 25px;
+    background: transparent;
+    border: 1px solid #555;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #555;
+    color: white;
 }
 
 /* CARTA */
-.card{
-background:rgba(255,255,255,0.08);
-backdrop-filter:blur(15px);
-padding:60px 70px;
-border-radius:30px;
-max-width:700px;
-text-align:center;
-box-shadow:0 0 60px rgba(0,0,0,0.6);
+.container {
+    padding: 80px 20px;
+    display: none;
+    text-align: center;
 }
 
-.card h1{
-font-family:'Great Vibes', cursive;
-font-size:55px;
-margin-bottom:30px;
+.letter {
+    max-width: 750px;
+    margin: auto;
+    background: #fdfaf3;
+    padding: 60px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    position: relative;
+    transition: 0.5s ease;
 }
 
-.card p{
-font-size:18px;
-line-height:1.9;
-opacity:0.95;
+.letter:hover {
+    transform: translateY(-5px);
 }
 
-/* PLAYER FIXO */
-.player{
-position:fixed;
-bottom:0;
-width:100%;
-background:rgba(0,0,0,0.85);
-padding:18px;
-display:flex;
-align-items:center;
-justify-content:center;
-gap:25px;
+.paper-texture {
+    position: absolute;
+    inset: 0;
+    background: url('https://www.transparenttextures.com/patterns/paper.png');
+    opacity: 0.4;
+    pointer-events: none;
 }
 
-.player button{
-background:none;
-border:1px solid white;
-color:white;
-padding:6px 16px;
-border-radius:20px;
-cursor:pointer;
+.date {
+    font-size: 14px;
+    margin-bottom: 20px;
 }
 
-.progress-container{
-width:40%;
-height:3px;
-background:rgba(255,255,255,0.2);
-border-radius:10px;
-overflow:hidden;
+.title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 42px;
+    margin-bottom: 40px;
 }
 
-.progress{
-height:100%;
-width:0%;
-background:white;
+.letter p {
+    margin-bottom: 18px;
+    line-height: 1.7;
+    font-size: 20px;
+}
+
+/* PLAYER */
+.player {
+    margin-top: 40px;
+    background: #f3eee5;
+    padding: 20px;
+    display: inline-block;
+    border-radius: 40px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.player button {
+    border: none;
+    background: none;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+/* FOTO */
+.photo-section {
+    margin-top: 60px;
+    text-align: center;
+}
+
+.photo-wrapper {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.photo-wrapper img {
+    max-width: 500px;
+    border-radius: 10px;
+    filter: blur(10px);
+    transition: 0.8s;
+}
+
+.photo-wrapper:hover img {
+    transform: scale(1.02);
+}
+
+.reveal-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+
+.photo-wrapper.revealed img {
+    filter: blur(0);
+}
+
+.photo-wrapper.revealed .reveal-text {
+    display: none;
 }
 </style>
 </head>
@@ -100,76 +186,70 @@ background:white;
 
 <div class="background"></div>
 
-<div class="card">
-<h1>My bae 💌</h1>
-<p>
-Quão belo é poder compartilhar o mesmo momento da história que você.
-<br><br>
-Quão magnífico são os desencontros e encontros da vida que me levaram até os seus braços.
-<br><br>
-É como se os meus dias soubessem que em algum ponto da minha história, chegaria você, pra mudar ela completamente.
-<br><br>
-Você não chegou fazendo barulho, você chegou fazendo sentido.
-<br><br>
-Desde a tua chegada, tudo tomou o seu devido lugar.
-<br><br>
-Meu coração finalmente descansou com a sensação de quem volta pra casa.
-Em você encontrei o meu lar.
-<br><br>
-No brilho silencioso dos seus olhos, meu caminho foi de encontro ao teu.
-<br><br>
-Você acalma o caos em mim.
-<br><br>
-Você traz segurança, conforto e o sentimento de eternidade.
-<br><br>
-Hoje, não celebro apenas o seu aniversário, mas a sua essência.
-<br><br>
-Seguirei, por escolha, te amando por todos os meus dias.
-<br><br>
-Tenha um feliz aniversário!
-<br><br>
-Você é o amor da minha vida ❤️
-</p>
+<div id="lockScreen">
+    <h2>Insira a nossa data especial</h2>
+    <input type="password" id="passwordInput">
+    <button onclick="checkPassword()">Entrar</button>
 </div>
 
-<div class="player">
-<button id="playBtn">▶</button>
+<div class="container" id="mainContent">
+    <div class="letter">
+        <div class="paper-texture"></div>
+        <div class="date">Feb 12, 2026</div>
+        <div class="title">My bae</div>
 
-<div class="progress-container">
-<div class="progress" id="progress"></div>
-</div>
-</div>
+        <p>Quão belo é poder compartilhar o mesmo momento da história que você.</p>
+        <p>Quão magnífico são os desencontros e encontros da vida que me levaram até os seus braços.</p>
+        <p>É como se os meus dias soubessem que em algum ponto da minha história, chegaria você, pra mudar ela completamente.</p>
+        <p>Você não chegou fazendo barulho, você chegou fazendo sentido.</p>
+        <p>Desde a tua chegada, tudo tomou o seu devido lugar.</p>
+        <p>Meu coração finalmente descansou com a sensação de quem volta pra casa. Em você encontrei o meu lar.</p>
+        <p>No brilho silencioso dos seus olhos, meu caminho foi de encontro ao teu.</p>
+        <p>Você acalma o caos em mim.</p>
+        <p>Você traz segurança, conforto e o sentimento de eternidade.</p>
+        <p>Você existe como quem atravessa: você não invade, não faz barulho, mas transforma tudo quando passa.</p>
+        <p>Hoje, não celebro apenas o seu aniversário, mas a sua essência, seu coração puro e bom...</p>
+        <p>Seguirei, por escolha, te amando por todos os meus dias, até o meu último dia.</p>
+        <p>Tenha um feliz aniversário!</p>
+        <p><strong>Você é o amor da minha vida ❤️</strong></p>
 
-<audio id="audio">
-<source src="./love.mp3" type="audio/mpeg">
-</audio>
+        <div class="player">
+            <audio id="audio" src="love.mp3" autoplay loop></audio>
+            <button onclick="playMusic()">▶</button>
+            <button onclick="pauseMusic()">⏸</button>
+        </div>
+    </div>
+
+    <div class="photo-section">
+        <div class="photo-wrapper" onclick="revealPhoto(this)">
+            <img src="foto.jpg" alt="Nossa foto">
+            <div class="reveal-text">Clique para revelar</div>
+        </div>
+    </div>
+</div>
 
 <script>
-const audio = document.getElementById("audio");
-const btn = document.getElementById("playBtn");
-const progress = document.getElementById("progress");
-
-btn.addEventListener("click", function(){
-
-if(audio.paused){
-audio.play().then(()=>{
-btn.textContent="❚❚";
-}).catch(err=>{
-alert("Clique novamente para ativar a música");
-});
-}else{
-audio.pause();
-btn.textContent="▶";
+function checkPassword() {
+    const password = document.getElementById("passwordInput").value;
+    if(password === "0103") {
+        document.getElementById("lockScreen").style.display = "none";
+        document.getElementById("mainContent").style.display = "block";
+    } else {
+        alert("Data incorreta 🤍");
+    }
 }
 
-});
-
-audio.addEventListener("timeupdate", function(){
-if(audio.duration){
-let percent = (audio.currentTime / audio.duration) * 100;
-progress.style.width = percent + "%";
+function playMusic() {
+    document.getElementById("audio").play();
 }
-});
+
+function pauseMusic() {
+    document.getElementById("audio").pause();
+}
+
+function revealPhoto(element) {
+    element.classList.toggle("revealed");
+}
 </script>
 
 </body>
