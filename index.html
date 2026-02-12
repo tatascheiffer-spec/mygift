@@ -14,7 +14,6 @@
     box-sizing: border-box;
 }
 
-/* FUNDO */
 body {
     font-family: 'Cormorant Garamond', serif;
     background: url('background.jpg') no-repeat center center fixed;
@@ -23,7 +22,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    padding: 40px 20px 120px;
+    padding: 40px 20px 160px;
     color: #3e3e3e;
 }
 
@@ -80,18 +79,16 @@ body {
 
 /* CARTA */
 .container {
-    background: rgba(255,255,255,0.92);
+    background: rgba(255,255,255,0.93);
     max-width: 850px;
     padding: 60px;
     border-radius: 8px;
     box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-    backdrop-filter: blur(4px);
 }
 
 h1 {
     font-family: 'Playfair Display', serif;
     font-size: 48px;
-    font-weight: 500;
     margin-bottom: 40px;
 }
 
@@ -122,7 +119,7 @@ p {
 .gift-wrapper img {
     width: 320px;
     border-radius: 8px;
-    transition: all 0.8s ease;
+    transition: 0.8s ease;
     filter: blur(12px);
 }
 
@@ -139,7 +136,18 @@ p {
     font-size: 14px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: rgba(0,0,0,0.6);
+}
+
+/* FOTO */
+.couple-photo {
+    margin-top: 80px;
+    text-align: center;
+}
+
+.couple-photo img {
+    width: 300px;
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
 }
 
 /* PLAYER */
@@ -152,7 +160,6 @@ p {
     padding: 15px 0;
     text-align: center;
     border-top: 1px solid rgba(0,0,0,0.05);
-    backdrop-filter: blur(6px);
 }
 
 audio {
@@ -163,51 +170,46 @@ audio {
 
 <body>
 
-<!-- TELA DE SENHA -->
+<!-- ÁUDIO (carrega já) -->
+<audio id="bgMusic" loop>
+    <source src="love.mp3" type="audio/mpeg">
+</audio>
+
+<!-- TELA SENHA -->
 <div id="lockScreen">
     <h2>Para você, meu amor</h2>
-    <p>Digite nossa data especial (primeira vez que nos vimos)</p>
     <input type="password" id="passwordInput" placeholder="Digite a senha">
     <button onclick="checkPassword()">Entrar</button>
     <p id="errorMessage">Senha incorreta…</p>
 </div>
 
-<!-- CONTEÚDO PRINCIPAL -->
+<!-- CONTEÚDO -->
 <div id="mainContent" style="display:none;">
 
     <div class="container">
-
         <h1>Meu amor 🤍</h1>
 
         <p>Quão belo é poder compartilhar o mesmo momento da história que você.</p>
-        <p>Quão magnífico são os desencontros e encontros da vida que me levaram até os seus braços.</p>
-        <p>É como se os meus dias soubessem que em algum ponto da minha história, chegaria você, pra mudar ela completamente.</p>
         <p>Você não chegou fazendo barulho, você chegou fazendo sentido.</p>
         <p>Desde a tua chegada, tudo tomou o seu devido lugar.</p>
-        <p>Meu coração finalmente descansou com a sensação de quem volta pra casa. Em você encontrei o meu lar.</p>
-        <p>No brilho silencioso dos seus olhos, meu caminho foi de encontro ao teu.</p>
-        <p>Você acalma o caos em mim.</p>
-        <p>Você traz segurança, conforto e o sentimento de eternidade.</p>
-        <p>Você existe como quem atravessa: você não invade, não faz barulho, mas transforma tudo quando passa.</p>
-        <p>Hoje, não celebro apenas o seu aniversário, mas a sua essência, seu coração puro e bom...</p>
-        <p>Seguirei, por escolha, te amando por todos os meus dias, até o meu último dia.</p>
-        <p>Tenha um feliz aniversário!</p>
-        <p><strong>Você é o amor da minha vida ❤️</strong></p>
+        <p>Feliz aniversário. Você é o amor da minha vida.</p>
 
         <div class="gift-section">
             <div class="gift-text">Seu presente está a caminho…</div>
 
             <div class="gift-wrapper" onclick="revealGift(this)">
-                <img src="presente.jpg" alt="Presente">
+                <img src="presente.jpg">
                 <div class="click-text">Clique para revelar</div>
             </div>
         </div>
 
+        <div class="couple-photo">
+            <img src="nossa-foto.jpg">
+        </div>
     </div>
 
-    <!-- PLAYER -->
     <div class="music-player">
-        <audio id="bgMusic" controls loop>
+        <audio controls>
             <source src="love.mp3" type="audio/mpeg">
         </audio>
     </div>
@@ -215,7 +217,14 @@ audio {
 </div>
 
 <script>
-const correctPassword = "0103"; // ALTERE A SENHA AQUI
+const correctPassword = "1202";
+const music = document.getElementById("bgMusic");
+
+/* Inicia música na PRIMEIRA interação do usuário */
+document.addEventListener("click", function startMusic() {
+    music.play().catch(() => {});
+    document.removeEventListener("click", startMusic);
+});
 
 function checkPassword() {
     const input = document.getElementById("passwordInput").value;
@@ -224,11 +233,6 @@ function checkPassword() {
     if (input === correctPassword) {
         document.getElementById("lockScreen").style.display = "none";
         document.getElementById("mainContent").style.display = "block";
-
-        // iniciar música
-        const audio = document.getElementById("bgMusic");
-        audio.play().catch(() => {});
-
     } else {
         error.style.display = "block";
     }
