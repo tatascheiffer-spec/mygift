@@ -18,11 +18,7 @@ body {
     font-family: 'Cormorant Garamond', serif;
     background: url('background.jpg') no-repeat center center fixed;
     background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 40px 20px 160px;
+    padding: 60px 20px 180px;
     color: #3e3e3e;
 }
 
@@ -40,10 +36,8 @@ body {
 }
 
 #lockScreen h2 {
-    font-weight: 300;
     margin-bottom: 20px;
     letter-spacing: 2px;
-    font-size: 26px;
 }
 
 #lockScreen input {
@@ -51,8 +45,8 @@ body {
     border: none;
     border-bottom: 1px solid #555;
     background: transparent;
-    font-size: 18px;
     text-align: center;
+    font-size: 18px;
     outline: none;
 }
 
@@ -62,13 +56,6 @@ body {
     background: transparent;
     border: 1px solid #555;
     cursor: pointer;
-    transition: 0.3s;
-    font-family: inherit;
-}
-
-#lockScreen button:hover {
-    background: #555;
-    color: white;
 }
 
 #errorMessage {
@@ -77,77 +64,63 @@ body {
     display: none;
 }
 
-/* CARTA */
-.container {
-    background: rgba(255,255,255,0.93);
-    max-width: 850px;
-    padding: 60px;
-    border-radius: 8px;
+/* SEÇÕES EM QUADRADOS */
+.section-box {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 50px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 10px;
     box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    text-align: center;
 }
 
 h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 48px;
-    margin-bottom: 40px;
+    font-size: 42px;
+    margin-bottom: 30px;
 }
 
 p {
     font-size: 20px;
     line-height: 1.8;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+}
+
+/* FOTO */
+.couple-photo img {
+    width: 320px;
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
 }
 
 /* PRESENTE */
-.gift-section {
-    margin-top: 60px;
-    text-align: center;
-}
-
-.gift-text {
-    font-style: italic;
-    font-size: 22px;
-    margin-bottom: 20px;
-}
-
 .gift-wrapper {
     position: relative;
     display: inline-block;
     cursor: pointer;
+    margin-top: 20px;
 }
 
 .gift-wrapper img {
     width: 320px;
-    border-radius: 8px;
+    border-radius: 10px;
+    filter: blur(14px);
     transition: 0.8s ease;
-    filter: blur(12px);
 }
 
 .gift-wrapper.revealed img {
     filter: blur(0);
-    transform: scale(1.02);
+    transform: scale(1.03);
 }
 
 .click-text {
     position: absolute;
     bottom: 10px;
     width: 100%;
-    text-align: center;
     font-size: 14px;
     letter-spacing: 2px;
     text-transform: uppercase;
-}
-
-/* FOTO */
-.couple-photo {
-    margin-top: 80px;
-    text-align: center;
-}
-
-.couple-photo img {
-    width: 300px;
-    border-radius: 12px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
 }
 
 /* PLAYER */
@@ -170,8 +143,8 @@ audio {
 
 <body>
 
-<!-- ÁUDIO (carrega já) -->
-<audio id="bgMusic" loop>
+<!-- ÁUDIO PRINCIPAL -->
+<audio id="bgMusic" preload="auto" loop>
     <source src="love.mp3" type="audio/mpeg">
 </audio>
 
@@ -186,9 +159,9 @@ audio {
 <!-- CONTEÚDO -->
 <div id="mainContent" style="display:none;">
 
-    <div class="container">
+    <!-- CARTA -->
+    <div class="section-box">
         <h1>Meu amor 🤍</h1>
-
         <p>Quão belo é poder compartilhar o mesmo momento da história que você.</p>
         <p>Quão magnífico são os desencontros e encontros da vida que me levaram até os seus braços.</p>
         <p>É como se os meus dias soubessem que em algum ponto da minha história, chegaria você, pra mudar ela completamente.</p>
@@ -203,23 +176,28 @@ audio {
         <p>Seguirei, por escolha, te amando por todos os meus dias, até o meu último dia.</p>
         <p>Tenha um feliz aniversário!</p>
         <p><strong>Você é o amor da minha vida ❤️</strong></p>
+    </div>
 
-        <div class="gift-section">
-            <div class="gift-text">Seu presente está a caminho…</div>
+    <!-- FOTO -->
+    <div class="section-box couple-video">
+        <h1>Nós 🤍</h1>
+        <img src="oursa.mp4" alt="Nós dois">
+    </div>
 
-            <div class="gift-wrapper" onclick="revealGift(this)">
-                <img src="presente.jpg">
-                <div class="click-text">Clique para revelar</div>
-            </div>
-        </div>
+    <!-- PRESENTE (ÚLTIMO) -->
+    <div class="section-box">
+        <h1>Seu presente 🎁</h1>
+        <p>Seu presente está a caminho…</p>
 
-        <div class="couple-photo">
-            <img src="nossa-foto.jpg">
+        <div class="gift-wrapper" onclick="revealGift(this)">
+            <img src="presente.jpg">
+            <div class="click-text">Clique para revelar</div>
         </div>
     </div>
 
+    <!-- PLAYER -->
     <div class="music-player">
-        <audio controls>
+        <audio id="player" controls>
             <source src="love.mp3" type="audio/mpeg">
         </audio>
     </div>
@@ -228,13 +206,22 @@ audio {
 
 <script>
 const correctPassword = "1202";
-const music = document.getElementById("bgMusic");
+const bgMusic = document.getElementById("bgMusic");
+let musicStarted = false;
 
-/* Inicia música na PRIMEIRA interação do usuário */
-document.addEventListener("click", function startMusic() {
-    music.play().catch(() => {});
-    document.removeEventListener("click", startMusic);
-});
+/* Força tocar música na primeira interação */
+function startMusic() {
+    if (!musicStarted) {
+        bgMusic.play().then(() => {
+            musicStarted = true;
+        }).catch(err => {
+            console.log("Autoplay bloqueado:", err);
+        });
+    }
+}
+
+document.addEventListener("click", startMusic);
+document.addEventListener("keydown", startMusic);
 
 function checkPassword() {
     const input = document.getElementById("passwordInput").value;
@@ -243,6 +230,7 @@ function checkPassword() {
     if (input === correctPassword) {
         document.getElementById("lockScreen").style.display = "none";
         document.getElementById("mainContent").style.display = "block";
+        startMusic();
     } else {
         error.style.display = "block";
     }
